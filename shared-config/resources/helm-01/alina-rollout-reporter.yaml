@@ -96,6 +96,8 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: cf
 spec:
+  template:
+    serviceAccountName: alina-rollout-reporter-sa
   dependencies:
   - name: analysisruns
     eventSourceName: alina-rollout-reporter
