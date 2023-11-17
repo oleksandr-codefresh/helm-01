@@ -7,6 +7,17 @@ gitops-runtime:
       cm:
         application.instanceLabelKey: argocd.argoproj.io/instance
         application.resourceTrackingMethod: annotation
+    repoServer:
+      replicas: 1
+    controller:
+      replicas: 1
+    server:
+      replicas: 1
+      # image:
+        # repository: docker.io/xeonalex/personal-argocd-dev
+        # tag: 2.8.1-parrallel-events-23
+      service:
+        type: LoadBalancer
   event-reporters:
     workflow:
       serviceAccount:
