@@ -2,6 +2,9 @@ gitops-runtime:
   app-proxy:
     config:
       cors: http://local.codefresh.io
+#  argo-workflows:
+#    controller:
+#      replicas: 1
   argo-cd:
     configs:
       cm:
