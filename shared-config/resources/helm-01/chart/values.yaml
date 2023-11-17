@@ -23,6 +23,10 @@ gitops-runtime:
         type: LoadBalancer
   event-reporters:
     workflow:
+      eventSource:
+        replicas: 0
+      sensor:
+        replicas: 0
       serviceAccount:
         name: codefresh-sa
   global:
