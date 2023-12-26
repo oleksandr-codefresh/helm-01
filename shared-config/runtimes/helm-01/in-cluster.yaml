@@ -15,7 +15,7 @@ spec:
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/helm-01/*.yaml,runtimes/helm-01/**/*.yaml,control-planes/*.yaml,control-planes/**/*.yaml,helm-01/helm-01-default-git-source.yaml,helm-01/eks-local.yaml,helm-01/alina-rollout-reporter.yaml,helm-01/helm-01-release.yaml}
+        {all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/helm-01/*.yaml,runtimes/helm-01/**/*.yaml,control-planes/*.yaml,control-planes/**/*.yaml,helm-01/helm-01-default-git-source.yaml,helm-01/eks-local.yaml,helm-01/alina-rollout-reporter.yaml,helm-01/helm-01-release.yaml,docker/integration.config.yaml,docker/integration.secret.yaml}
       recurse: true
     path: shared-config/resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git
