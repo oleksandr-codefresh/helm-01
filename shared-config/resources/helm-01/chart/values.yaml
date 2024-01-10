@@ -3,6 +3,9 @@ gitops-runtime:
     config:
       cors: http://local.codefresh.io
       graphqlPlayground: "true"
+    env:
+      - name: GRAPHQL_INTROSPECTION
+        value: "true"
 #  argo-workflows:
 #    controller:
 #      replicas: 1
