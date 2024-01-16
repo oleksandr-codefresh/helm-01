@@ -2,6 +2,7 @@ gitops-runtime:
   app-proxy:
     config:
       cors: http://local.codefresh.io
+      graphqlPlayground: "true"
 #  argo-workflows:
 #    controller:
 #      replicas: 1
