@@ -2,6 +2,31 @@ gitops-runtime:
   app-proxy:
     config:
       cors: http://local.codefresh.io
+  #  argo-workflows:
+  #    controller:
+  #      replicas: 1
+  argo-cd:
+    # configs:
+    #   cm:
+    #     application.instanceLabelKey: argocd.argoproj.io/instance
+    #     application.resourceTrackingMethod: annotation
+    repoServer:
+      replicas: 1
+    controller:
+      replicas: 1
+    server:
+      replicas: 1
+        # image:
+        # repository: docker.io/xeonalex/personal-argocd-dev
+      # tag: 2.8.1-parrallel-events-23
+      service:
+        type: LoadBalancer
+  event-reporters:
+    workflow:
+      eventSource:
+        replicas: 0
+      sensor:
+        replicas: 0
   global:
     codefresh:
       accountId: 65a57fa5f5681104cb83078f
