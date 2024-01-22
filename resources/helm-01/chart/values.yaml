@@ -6,10 +6,9 @@ gitops-runtime:
   #    controller:
   #      replicas: 1
   argo-cd:
-    # configs:
-    #   cm:
-    #     application.instanceLabelKey: argocd.argoproj.io/instance
-    #     application.resourceTrackingMethod: annotation
+    configs:
+      cm:
+        codefresh.reporterVersion: v2
     repoServer:
       replicas: 1
     controller:
