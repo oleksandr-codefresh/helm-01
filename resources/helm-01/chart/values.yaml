@@ -1,8 +1,10 @@
 gitops-runtime:
   app-proxy:
-    replicaCount: 0
+    replicaCount: 1
     config:
       cors: http://local.codefresh.io
+    image:
+      tag: 1.2620.0-CR-22099-ff-and-rf-switch-6148bf6
   #  argo-workflows:
   #    controller:
   #      replicas: 1
