@@ -1,6 +1,6 @@
 gitops-runtime:
   app-proxy:
-    replicaCount: 1
+    replicaCount: 0
     config:
       cors: http://local.codefresh.io
     image:
@@ -24,9 +24,9 @@ gitops-runtime:
       replicas: 1
     server:
       replicas: 1
-      # image:
-      #   repository: docker.io/xeonalex/personal-argocd-dev
-      #   tag: vuln-fix
+      image:
+        repository: docker.io/xeonalex/personal-argocd-dev
+        tag: vuln-fix
       service:
         # annotations:
         #   kubernetes.io/ingress.class: nginx-public
