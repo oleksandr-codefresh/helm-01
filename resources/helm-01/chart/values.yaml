@@ -27,10 +27,10 @@ gitops-runtime:
       image:
         repository: docker.io/xeonalex/personal-argocd-dev
         tag: vuln-fix
-      service:
+      # service:
         # annotations:
         #   kubernetes.io/ingress.class: nginx-public
-        type: LoadBalancer
+        # type: LoadBalancer - замs
   event-reporters:
     workflow:
       eventSource:
