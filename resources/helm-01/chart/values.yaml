@@ -72,7 +72,6 @@ gitops-runtime:
               - |
                 git checkout -- .
                 git clean -fdx
-                helm dependency update
             generate:
               command:
               - sh
