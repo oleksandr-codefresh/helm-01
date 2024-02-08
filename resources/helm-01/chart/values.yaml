@@ -12,8 +12,8 @@ gitops-runtime:
   argo-cd:
     configs:
       params:
-        basehref: /argocd
-        rootpath: /argocd
+        server.basehref: /argocd
+        server.rootpath: /argocd
       cm:
         codefresh.reporterVersion: v2
     eventReporter:
