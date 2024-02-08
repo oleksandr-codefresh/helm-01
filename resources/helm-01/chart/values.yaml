@@ -19,9 +19,9 @@ gitops-runtime:
     eventReporter:
       enabled: "true"
       version: v2
-      env: 
-        - name: USE_GRPC
-          value: "true"
+      # env: 
+      #   - name: USE_GRPC
+      #     value: "true"
     repoServer:
       replicas: 1
     controller:
