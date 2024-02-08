@@ -72,7 +72,6 @@ gitops-runtime:
               - |
                 git checkout -- .
                 git clean -fdx
-                sops -d -i secrets.yaml
                 helm dependency update
             generate:
               command:
