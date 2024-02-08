@@ -36,6 +36,8 @@ gitops-runtime:
         #   kubernetes.io/ingress.class: nginx-public
         # type: LoadBalancer - краще юзати ingress
   event-reporters:
+    events:
+      argoCDServerServicePort: 80/argocd
     workflow:
       eventSource:
         replicas: 0
