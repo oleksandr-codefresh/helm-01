@@ -105,9 +105,9 @@ gitops-runtime:
       sensor:
         replicas: 0
   global:
-    image:
-      repository: docker.io/xeonalex/personal-argocd-dev
-      tag: git-client
+    # image:
+    #   repository: docker.io/xeonalex/personal-argocd-dev
+    #   tag: git-client
     codefresh:
       accountId: 65a57fa5f5681104cb83078f
       url: https://alexs-platform.ngrok.io
