@@ -5,7 +5,7 @@ gitops-runtime:
       cors: http://local.codefresh.io
       argoCdUrl: http://argo-cd-server:80/argocd
     image:
-      tag: 1.2620.0-CR-22099-ff-and-rf-switch-6148bf6
+      tag: 1.2651.0-CR-22513-previous-logs-f9d05aa
   #  argo-workflows:
   #    controller:
   #      replicas: 1
