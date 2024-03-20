@@ -4,12 +4,16 @@ gitops-runtime:
     config:
       cors: http://local.codefresh.io
       argoCdUrl: http://argo-cd-server:80/argocd
-    image:
-      tag: 1.2651.0-CR-22513-previous-logs-f9d05aa
+    # image:
+    #   tag: 1.2651.0-CR-22513-previous-logs-f9d05aa
   #  argo-workflows:
   #    controller:
   #      replicas: 1
   argo-cd:
+    global:
+      image:
+        repository: docker.io/xeonalex/personal-argocd-dev
+        tag: release-2.10-0
     configs:
       params:
         server.basehref: /argocd
@@ -24,65 +28,6 @@ gitops-runtime:
       #     value: "true"
     repoServer:
       replicas: 1
-      volumes:
-      - configMap:
-          name: helm-sops-config
-        name: cmp-plugin
-      extraContainers:
-      - name: cmp
-        command: [/var/run/argocd/argocd-cmp-server]
-        image: quay.io/codefresh/internal-argocd-plugins/helm-sops:3.12.0
-        securityContext:
-          runAsNonRoot: true
-          runAsUser: 999
-        env:
-          - name: HELM_CACHE_HOME
-            value: /helm-working-dir
-          - name: HELM_CONFIG_HOME
-            value: /helm-working-dir
-          - name: HELM_DATA_HOME
-            value: /helm-working-dir
-        volumeMounts:
-          - mountPath: /var/run/argocd
-            name: var-files
-          - mountPath: /home/argocd/cmp-server/plugins
-            name: plugins
-          - mountPath: /home/argocd/cmp-server/config/plugin.yaml
-            subPath: plugin.yaml
-            name: cmp-plugin
-          - name: helm-working-dir
-            mountPath: /helm-working-dir
-    extraObjects:
-    - apiVersion: v1
-      kind: ConfigMap
-      metadata:
-        name: helm-sops-config
-      data:
-        plugin.yaml: |
-          apiVersion: argoproj.io/v1alpha1
-          kind: ConfigManagementPlugin
-          metadata:
-            name: helm-sops
-          spec:
-            init:
-              command:
-              - sh
-              - -c
-              - -e
-              - |
-                git checkout -- .
-                git clean -fdx
-            generate:
-              command:
-              - sh
-              - -c
-              - -e
-              - |
-                helm template --namespace $ARGOCD_APP_NAMESPACE --release-name $ARGOCD_ENV_RELEASE_NAME --values values.yaml --values secrets.yaml .
-            discover:
-              find:
-                glob: "**/secrets.yaml"
-
     controller:
       replicas: 1
     server:
