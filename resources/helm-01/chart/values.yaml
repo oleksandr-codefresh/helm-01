@@ -13,7 +13,7 @@ gitops-runtime:
     global:
       image:
         repository: docker.io/xeonalex/personal-argocd-dev
-        tag: 2.10
+        tag: "2.10"
     configs:
       params:
         server.basehref: /argocd
