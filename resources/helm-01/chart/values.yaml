@@ -31,20 +31,10 @@ gitops-runtime:
         repository: quay.io/argoproj/argocd
         tag: v2.10.1
       replicas: 1
-    controller:
-      image: 
-        repository: quay.io/argoproj/argocd
-        tag: v2.10.1
-      replicas: 1
-    server:
-      image: 
-        repository: quay.io/argoproj/argocd
-        tag: v2.10.1
-      replicas: 1
       extraContainers:
       - name: cmp
         command: [/var/run/argocd/argocd-cmp-server]
-        image: busybox
+        image: quay.io/codefresh/internal-argocd-plugins/helm-sops:3.14.0
         securityContext:
           runAsNonRoot: true
           runAsUser: 999
@@ -68,6 +58,49 @@ gitops-runtime:
           - name: helm-working-dir
             mountPath: /helm-working-dir
 
+    extraObjects:
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: helm-sops-config
+      data:
+        plugin.yaml: |
+          apiVersion: argoproj.io/v1alpha1
+          kind: ConfigManagementPlugin
+          metadata:
+            name: helm-sops
+          spec:
+            init:
+              command:
+              - sh
+              - -c
+              - -e
+              - |
+                git checkout -- .
+                git clean -fdx
+                sops -d -i secrets.yaml
+                helm dependency update
+            generate:
+              command:
+              - sh
+              - -c
+              - -e
+              - |
+                helm template --namespace $ARGOCD_APP_NAMESPACE --release-name $ARGOCD_ENV_RELEASE_NAME --values values.yaml --values secrets.yaml .
+            discover:
+              find:
+                glob: "**/secrets.yaml"
+
+    controller:
+      image: 
+        repository: quay.io/argoproj/argocd
+        tag: v2.10.1
+      replicas: 1
+    server:
+      image: 
+        repository: quay.io/argoproj/argocd
+        tag: v2.10.1
+      replicas: 1
       # image:
       #   repository: docker.io/xeonalex/personal-argocd-dev
       #   tag: vuln-fix
