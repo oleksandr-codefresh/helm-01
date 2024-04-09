@@ -31,10 +31,14 @@ gitops-runtime:
         repository: quay.io/argoproj/argocd
         tag: v2.10.1
       replicas: 1
+      volumes:
+      - configMap:
+          name: helm-sops-config
+        name: cmp-plugin
       extraContainers:
       - name: cmp
         command: [/var/run/argocd/argocd-cmp-server]
-        image: quay.io/codefresh/internal-argocd-plugins/helm-sops:3.14.0
+        image: busybox
         securityContext:
           runAsNonRoot: true
           runAsUser: 999
