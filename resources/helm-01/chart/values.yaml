@@ -68,28 +68,15 @@ gitops-runtime:
           apiVersion: argoproj.io/v1alpha1
           kind: ConfigManagementPlugin
           metadata:
-            name: helm-sops
+            name: cmp-plugin
           spec:
+            version: v1.0
             init:
-              command:
-              - sh
-              - -c
-              - -e
-              - |
-                git checkout -- .
-                git clean -fdx
-                sops -d -i secrets.yaml
-                helm dependency update
+              command: [sh, -c, 'echo "Initializing..."']
             generate:
-              command:
-              - sh
-              - -c
-              - -e
-              - |
-                helm template --namespace $ARGOCD_APP_NAMESPACE --release-name $ARGOCD_ENV_RELEASE_NAME --values values.yaml --values secrets.yaml .
+              command: [sh, -c, 'echo "{\"kind\": \"ConfigMap\", \"apiVersion\": \"v1\", \"metadata\": { \"name\": \"$ARGOCD_APP_NAME\", \"namespace\": \"$ARGOCD_APP_NAMESPACE\", \"annotations\": {\"Foo\": \"$ARGOCD_ENV_FOO\", \"KubeVersion\": \"$KUBE_VERSION\", \"KubeApiVersion\": \"$KUBE_API_VERSIONS\",\"Bar\": \"baz\"}}}"']
             discover:
-              find:
-                glob: "**/secrets.yaml"
+              fileName: "./subdir/s*.yaml"
 
     controller:
       image: 
