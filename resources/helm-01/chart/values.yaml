@@ -27,11 +27,47 @@ gitops-runtime:
       #   - name: USE_GRPC
       #     value: "true"
     repoServer:
+      image: 
+        repository: quay.io/argoproj/argocd
+        tag: v2.10.1
       replicas: 1
     controller:
+      image: 
+        repository: quay.io/argoproj/argocd
+        tag: v2.10.1
       replicas: 1
     server:
+      image: 
+        repository: quay.io/argoproj/argocd
+        tag: v2.10.1
       replicas: 1
+      extraContainers:
+      - name: cmp
+        command: [/var/run/argocd/argocd-cmp-server]
+        image: busybox
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 999
+        env:
+          - name: HELM_CACHE_HOME
+            value: /helm-working-dir
+          - name: HELM_CONFIG_HOME
+            value: /helm-working-dir
+          - name: HELM_DATA_HOME
+            value: /helm-working-dir
+          - name: ARGOCD_EXEC_TIMEOUT
+            value: 600s
+        volumeMounts:
+          - mountPath: /var/run/argocd
+            name: var-files
+          - mountPath: /home/argocd/cmp-server/plugins
+            name: plugins
+          - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+            subPath: plugin.yaml
+            name: cmp-plugin
+          - name: helm-working-dir
+            mountPath: /helm-working-dir
+
       # image:
       #   repository: docker.io/xeonalex/personal-argocd-dev
       #   tag: vuln-fix
