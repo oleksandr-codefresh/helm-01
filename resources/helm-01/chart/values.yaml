@@ -18,7 +18,7 @@ gitops-runtime:
       params:
         server.basehref: /argocd
         server.rootpath: /argocd
-        controller.repo.server.timeout.seconds: "300"
+        # controller.repo.server.timeout.seconds: "300"
       cm:
         codefresh.reporterVersion: v2
             configs:
@@ -94,9 +94,9 @@ gitops-runtime:
       #   repository: quay.io/argoproj/argocd
       #   tag: v2.10.1
       replicas: 1
-      config:
-        server.repo.server.timeout.seconds: 600s
-        controller.repo.server.timeout.seconds: 600s
+      # config:
+      #   server.repo.server.timeout.seconds: 600s
+      #   controller.repo.server.timeout.seconds: 600s
       # image:
       #   repository: docker.io/xeonalex/personal-argocd-dev
       #   tag: vuln-fix
