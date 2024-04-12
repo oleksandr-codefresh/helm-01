@@ -51,8 +51,8 @@ gitops-runtime:
             value: /helm-working-dir
           - name: HELM_DATA_HOME
             value: /helm-working-dir
-          - name: ARGOCD_EXEC_TIMEOUT
-            value: 600s
+          # - name: ARGOCD_EXEC_TIMEOUT
+          #   value: 600s
         volumeMounts:
           - mountPath: /var/run/argocd
             name: var-files
