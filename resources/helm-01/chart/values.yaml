@@ -10,10 +10,10 @@ gitops-runtime:
   #    controller:
   #      replicas: 1
   argo-cd:
-    global:
-      image:
-        repository: docker.io/xeonalex/personal-argocd-dev
-        tag: 2.10-grpc-0
+    # global:
+    #   image:
+    #     repository: docker.io/xeonalex/personal-argocd-dev
+    #     tag: 2.10-grpc-0
     configs:
       params:
         server.basehref: /argocd
