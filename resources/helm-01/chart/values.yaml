@@ -128,7 +128,7 @@ gitops-runtime:
         className: nginx-internal
         enabled: true
         hosts:
-          - alex-hermes-local.rnd-sandbox.cf-infra.com
+          - alex-hermes-local.rnd.sandbox.codefresh.io
         protocol: https
       name: helm-01
   installer:
