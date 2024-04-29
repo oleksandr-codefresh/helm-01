@@ -21,7 +21,6 @@ gitops-runtime:
         # controller.repo.server.timeout.seconds: "300"
       cm:
         codefresh.reporterVersion: v2
-            configs:
     eventReporter:
       enabled: "true"
       version: v2
