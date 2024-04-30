@@ -124,7 +124,7 @@ gitops-runtime:
           key: token
     runtime:
       ingress:
-        className: nginx-public
+        className: nginx-internal
         enabled: true
         hosts:
           - alex-hermes-local.rnd.sandbox.codefresh.io
