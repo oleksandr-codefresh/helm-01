@@ -106,11 +106,11 @@ gitops-runtime:
   event-reporters:
     events:
       argoCDServerServicePort: 80/argocd
-    workflow:
-      eventSource:
-        replicas: 0
-      sensor:
-        replicas: 0
+    # workflow:
+      # eventSource:
+      #   replicas: 0
+      # sensor:
+      #   replicas: 0
   global:
     # image:
     #   repository: docker.io/xeonalex/personal-argocd-dev
