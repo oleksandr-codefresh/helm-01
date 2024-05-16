@@ -114,7 +114,7 @@ gitops-runtime:
   gitops-operator:
     env:
       - name: ARGO_CD_URL
-        value: http://argo-cd-server:80/argocd
+        value: "http://argo-cd-server:80/argocd"
   global:
     # image:
     #   repository: docker.io/xeonalex/personal-argocd-dev
