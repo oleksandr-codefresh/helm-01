@@ -6,10 +6,10 @@ gitops-runtime:
       argoCdUrl: http://argo-cd-server:80/argocd
     # image:
     #   tag: 1.2651.0-CR-22513-previous-logs-f9d05aa
-   argo-workflows:
-     controller:
-        podGCDeleteDelayDuration: '300s'
-        # replicas: 1
+  argo-workflows:
+    controller:
+      podGCDeleteDelayDuration: '300s'
+      # replicas: 1
   argo-cd:
     # global:
     #   image:
