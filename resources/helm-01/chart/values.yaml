@@ -128,10 +128,12 @@ gitops-runtime:
           key: token
     runtime:
       ingress:
-        className: nginx-internal
+        # className: nginx-internal
+        className: nginx-public
         enabled: true
         hosts:
-          - alex-hermes-local.rnd.sandbox.codefresh.io
+          - alex-hermes-local.rnd.sandbox.codefresh.io #public
+          # - alex-hermes-local.rnd-sandbox.cf-infra.com #internal
         protocol: https
       name: helm-01
   installer:
