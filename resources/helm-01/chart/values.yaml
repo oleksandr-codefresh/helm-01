@@ -23,7 +23,7 @@ gitops-runtime:
       cm:
         codefresh.reporterVersion: v2
     eventReporter:
-      enabled: "true"
+      enabled: "false"
       version: v2
       # env: 
       #   - name: USE_GRPC
