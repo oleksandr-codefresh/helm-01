@@ -23,9 +23,9 @@ gitops-runtime:
       cm:
         codefresh.reporterVersion: v2
     eventReporter:
-      enabled: "false"
-      version: v1
-      replicas: 0
+      enabled: "true"
+      version: v2
+      # replicas: 0
       # env: 
       #   - name: USE_GRPC
       #     value: "true"
