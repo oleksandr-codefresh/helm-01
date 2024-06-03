@@ -30,9 +30,9 @@ gitops-runtime:
       #   - name: USE_GRPC
       #     value: "true"
     repoServer:
-      image: 
-        repository: docker.io/pashacodefresh/argocd
-        tag: latest
+      # image: 
+      #   repository: docker.io/pashacodefresh/argocd
+      #   tag: latest
       replicas: 1
       volumes:
       - configMap:
@@ -86,14 +86,14 @@ gitops-runtime:
     #           fileName: "./*.yaml"
 
     controller:
-      image: 
-        repository: docker.io/pashacodefresh/argocd
-        tag: latest
+      # image: 
+      #   repository: docker.io/pashacodefresh/argocd
+      #   tag: latest
       replicas: 1
     server:
-      image: 
-        repository: docker.io/pashacodefresh/argocd
-        tag: latest
+      # image: 
+      #   repository: docker.io/pashacodefresh/argocd
+      #   tag: latest
       replicas: 1
       # config:
       #   server.repo.server.timeout.seconds: 600s
