@@ -1,0 +1,12 @@
+apiVersion: codefresh.io/v1beta1
+kind: Product
+metadata:
+  name: primary-product
+spec:
+  promotionFlows:
+    - name: demo-retry
+      gitTriggerSelectors:
+        - key: commitMessage
+          operator: In
+          values:
+            - sdas
