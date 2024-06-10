@@ -9,5 +9,4 @@ spec:
         - key: commitMessage
           operator: In
           values:
-            - sdsd
-  promotionTemplate: {}
+            - asaa
