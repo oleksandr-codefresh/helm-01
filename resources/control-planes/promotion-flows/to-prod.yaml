@@ -3,7 +3,7 @@ kind: PromotionFlow
 metadata:
   name: to-prod
   annotations:
-    description: ""
+    description: dsdsd
 spec:
   triggerEnvironment: dev
   steps:
