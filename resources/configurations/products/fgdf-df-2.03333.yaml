@@ -1,0 +1,13 @@
+apiVersion: codefresh.io/v1beta1
+kind: Product
+metadata:
+  name: fgdf-df-2.03333
+spec:
+  promotionFlows:
+    - name: demo-retry
+      gitTriggerSelectors:
+        - key: commitMessage
+          operator: In
+          values:
+            - asdasd
+  promotionTemplate: {}
