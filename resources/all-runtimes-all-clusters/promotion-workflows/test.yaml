@@ -9,6 +9,7 @@ metadata:
   annotations:
     version: 0.0.1
     codefresh.io/workflow-origin: promotion
+    bla-bla: promotion
 spec:
   arguments:
     parameters:
