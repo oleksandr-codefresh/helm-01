@@ -14,7 +14,7 @@ gitops-runtime:
     global:
       image:
         repository: xeonalex/personal-argocd-dev
-        tag: 2.11-merge-1
+        tag: 2.11-merge-2
     configs:
       params:
         server.basehref: /argocd
