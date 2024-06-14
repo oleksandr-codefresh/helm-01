@@ -127,6 +127,13 @@ gitops-runtime:
         secretKeyRef:
           name: codefresh-user-token
           key: token
+      # tls:
+      #   # --  Custom CA certificates bundle for platform access with ssl
+      #   caCerts:
+      #     # -- Reference to existing secret
+      #     secretKeyRef:
+      #       name: test-cf-cert
+      #       key: sa
     runtime:
       ingress:
         # className: nginx-internal
