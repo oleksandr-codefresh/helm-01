@@ -1,0 +1,12 @@
+apiVersion: codefresh.io/v1beta1
+kind: Product
+metadata:
+  name: sdsd
+spec:
+  promotionFlows:
+    - namse: demo-retry
+      gitTriggerSelectors:
+        - key: commitMessage
+          operator: NotIn
+          values:
+            - dsdsd
