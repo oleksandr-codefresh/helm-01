@@ -23,6 +23,9 @@ gitops-runtime:
       cm:
         codefresh.reporterVersion: v2
     eventReporter:
+      image:
+        repository: xeonalex/personal-argocd-dev
+        tag: 2.11-app-meta-event-0
       enabled: "true"
       version: v2
       replicas: 1
