@@ -1,0 +1,22 @@
+gitops-runtime:
+  app-proxy:
+    config:
+      cors: http://local.codefresh.io
+  global:
+    codefresh:
+      accountId: 65c5f89ca4bb5cd2c5d9c415
+      url: https://alexs-platform.ngrok.io
+      userToken:
+        secretKeyRef:
+          name: codefresh-user-token
+          key: token
+    runtime:
+      ingress:
+        className: nginx-public
+        enabled: true
+        hosts:
+          - alex-hermes-local.rnd.sandbox.codefresh.io
+        protocol: https
+      name: helm-01
+  installer:
+    skipValidation: true
