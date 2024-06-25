@@ -144,6 +144,6 @@ gitops-runtime:
           # - alex-hermes-local.rnd-sandbox.cf-infra.com #internal
         protocol: https
       name: helm-01
-      isConfigurationRuntime: true
+      isConfigurationRuntime: false
   installer:
     skipValidation: true
