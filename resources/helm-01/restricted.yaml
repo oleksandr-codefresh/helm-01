@@ -1,0 +1,31 @@
+apiVersion: codefresh.io/v1beta1
+kind: RestrictedGitSource
+metadata:
+  name: restricted
+spec:
+  source:
+    repoURL: https://github.com/oleksandr-codefresh/eks-local_git-source.git
+    path: restricted
+    targetRevision: main
+    directory:
+      include: '*'
+      exclude: ''
+      recurse: true
+  destinations:
+  - server: 'https://kubernetes.default.svc'
+    name: 'in-cluster'
+    namespace: 'restricted'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  sourceRepos:
+  - '*'
+  sourceNamespace: 'cf-restricted'
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - allowEmpty=true
+    - CreateNamespace=true
