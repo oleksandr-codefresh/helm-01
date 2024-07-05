@@ -1,0 +1,7 @@
+apiVersion: codefresh.io/v1beta1
+kind: PromotionFlow
+metadata:
+  name: playtech-prod
+spec:
+  triggerEnvironment: production
+  steps: []

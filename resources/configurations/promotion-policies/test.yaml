@@ -1,0 +1,12 @@
+apiVersion: codefresh.io/v1beta1
+kind: PromotionPolicy
+metadata:
+  name: membership
+spec:
+  policy:
+    action: commit
+  priority: -100
+  selector:
+    product:
+      names:
+        - membership
