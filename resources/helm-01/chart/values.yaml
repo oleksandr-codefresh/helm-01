@@ -1,8 +1,131 @@
 gitops-runtime:
   app-proxy:
+    replicaCount: 1
     config:
       cors: http://local.codefresh.io
+      argoCdUrl: http://argo-cd-server:80/argocd
+    # image:
+    #   tag: 1.2651.0-CR-22513-previous-logs-f9d05aa
+  argo-workflows:
+    controller:
+      podGCDeleteDelayDuration: '300s'
+      # replicas: 1
+  argo-cd:
+    global:
+    # image:
+    #   repository: xeonalex/personal-argocd-dev
+    #   tag: 2.11-merge-3
+    configs:
+      params:
+        server.basehref: /argocd
+        server.rootpath: /argocd
+        # controller.repo.server.timeout.seconds: "300"
+      cm:
+        codefresh.reporterVersion: v2
+    eventReporter:
+      image:
+        repository: xeonalex/personal-argocd-dev
+        tag: 2.11-refactor-0
+      enabled: "true"
+      version: v2
+      replicas: 1
+      # env:
+      #   - name: USE_GRPC
+      #     value: "true"
+    repoServer:
+      # image:
+      #   repository: docker.io/pashacodefresh/argocd
+      #   tag: latest
+      replicas: 1
+      volumes:
+        - configMap:
+            name: helm-sops-config
+          name: cmp-plugin
+      # extraContainers:
+      # - name: cmp
+      #   command: [/var/run/argocd/argocd-cmp-server]
+      #   image: busybox
+      #   securityContext:
+      #     runAsNonRoot: true
+      #     runAsUser: 999
+      #   env:
+      #     - name: HELM_CACHE_HOME
+      #       value: /helm-working-dir
+      #     - name: HELM_CONFIG_HOME
+      #       value: /helm-working-dir
+      #     - name: HELM_DATA_HOME
+      #       value: /helm-working-dir
+      #     # - name: ARGOCD_EXEC_TIMEOUT
+      #     #   value: 600s
+      #   volumeMounts:
+      #     - mountPath: /var/run/argocd
+      #       name: var-files
+      #     - mountPath: /home/argocd/cmp-server/plugins
+      #       name: plugins
+      #     - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+      #       subPath: plugin.yaml
+      #       name: cmp-plugin
+      #     - name: helm-working-dir
+      #       mountPath: /helm-working-dir
+
+    # extraObjects:
+    # - apiVersion: v1
+    #   kind: ConfigMap
+    #   metadata:
+    #     name: helm-sops-config
+    #   data:
+    #     plugin.yaml: |
+    #       apiVersion: argoproj.io/v1alpha1
+    #       kind: ConfigManagementPlugin
+    #       metadata:
+    #         name: cmp-plugin
+    #       spec:
+    #         version: v1.0
+    #         init:
+    #           command: [sh, -c, 'echo "Initializing..."']
+    #         generate:
+    #           command: [sh, -c, 'echo "{\"kind\": \"ConfigMap\", \"apiVersion\": \"v1\", \"metadata\": { \"name\": \"$ARGOCD_APP_NAME\", \"namespace\": \"$ARGOCD_APP_NAMESPACE\", \"annotations\": {\"Foo\": \"$ARGOCD_ENV_FOO\", \"KubeVersion\": \"$KUBE_VERSION\", \"KubeApiVersion\": \"$KUBE_API_VERSIONS\",\"Bar\": \"baz\"}}}"']
+    #         discover:
+    #           fileName: "./*.yaml"
+
+    controller:
+      # image:
+      #   repository: docker.io/pashacodefresh/argocd
+      #   tag: latest
+      replicas: 1
+    server:
+      # image:
+      #   repository: docker.io/pashacodefresh/argocd
+      #   tag: latest
+      replicas: 1
+        # config:
+        #   server.repo.server.timeout.seconds: 600s
+        #   controller.repo.server.timeout.seconds: 600s
+        # image:
+        #   repository: docker.io/xeonalex/personal-argocd-dev
+        #   tag: vuln-fix
+        # service:
+        # annotations:
+      #   kubernetes.io/ingress.class: nginx-public
+      # type: LoadBalancer - краще юзати ingress
+  event-reporters:
+    events:
+      argoCDServerServicePort: 80/argocd
+      # workflow:
+      # eventSource:
+      #   replicas: 0
+      # sensor:
+      #   replicas: 0
+  gitops-operator:
+    # image:
+    #   repository: quay.io/codefresh/codefresh-gitops-operator
+    #   tag: cr-24411-vuln-fixes
+    env:
+      ARGO_CD_URL: argo-cd-server:80/argocd
   global:
+    # image:
+    #   repository: docker.io/xeonalex/personal-argocd-dev
+    #   tag: git-client
     codefresh:
       accountId: 65c5f89ca4bb5cd2c5d9c415
       url: https://alexs-platform.ngrok.io
@@ -10,13 +133,23 @@ gitops-runtime:
         secretKeyRef:
           name: codefresh-user-token
           key: token
+      # tls:
+      #   # --  Custom CA certificates bundle for platform access with ssl
+      #   caCerts:
+      #     # -- Reference to existing secret
+      #     secretKeyRef:
+      #       name: test-cf-cert
+      #       key: sa
     runtime:
       ingress:
+        # className: nginx-internal
         className: nginx-public
         enabled: true
         hosts:
-          - alex-hermes-local.rnd.sandbox.codefresh.io
+          - alex-hermes-local.rnd.sandbox.codefresh.io #public
+          # - alex-hermes-local.rnd-sandbox.cf-infra.com #internal
         protocol: https
       name: helm-01
+      isConfigurationRuntime: true
   installer:
     skipValidation: true
