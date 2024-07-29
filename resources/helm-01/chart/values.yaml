@@ -108,19 +108,19 @@ gitops-runtime:
         # annotations:
       #   kubernetes.io/ingress.class: nginx-public
       # type: LoadBalancer - краще юзати ingress
-  event-reporters:
-    events:
+  # event-reporters:
+    # events:
       # argoCDServerServicePort: 80/argocd # /argocd path
       # workflow:
       # eventSource:
       #   replicas: 0
       # sensor:
       #   replicas: 0
-  gitops-operator:
+  # gitops-operator:
     # image:
     #   repository: quay.io/codefresh/codefresh-gitops-operator
     #   tag: cr-24411-vuln-fixes
-    env:
+    # env:
       # ARGO_CD_URL: argo-cd-server:80/argocd # /argocd path
   global:
     # image:
