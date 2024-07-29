@@ -16,7 +16,7 @@ gitops-runtime:
     #   repository: xeonalex/personal-argocd-dev
     #   tag: 2.11-merge-3
     configs:
-      params:
+      # params:
         # server.basehref: /argocd # /argocd path
         # server.rootpath: /argocd # /argocd path
         # controller.repo.server.timeout.seconds: "300"
