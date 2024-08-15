@@ -21,3 +21,5 @@ spec:
     #   allowEmpty: true
     #   prune: true
     #   selfHeal: false
+    syncOptions:
+      - allowEmpty=false
