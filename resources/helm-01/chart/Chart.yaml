@@ -5,7 +5,7 @@ name: codefresh-gitops-runtime
 version: 0.9.2
 dependencies:
   - name: gitops-runtime
-    repository: oci://quay.io/codefresh
-    version: 0.9.2
-    # repository: oci://quay.io/codefresh/dev
-    # version: 0.0.0-chore-remove-events-reporter-resources-107c851
+    # repository: oci://quay.io/codefresh
+    # version: 0.9.2
+    repository: oci://quay.io/codefresh/dev
+    version: 0.0.0-chore-remove-events-reporter-resources-107c851
