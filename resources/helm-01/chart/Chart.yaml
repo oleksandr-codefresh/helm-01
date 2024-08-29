@@ -8,4 +8,4 @@ dependencies:
     # repository: oci://quay.io/codefresh
     # version: 0.9.2
     repository: oci://quay.io/codefresh/dev
-    version: 0.0.0-chore-remove-events-reporter-resources-107c851
+    version: 0.0.0-feat-argo-cd-2-12-679dc1e
