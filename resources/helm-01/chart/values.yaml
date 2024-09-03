@@ -14,7 +14,7 @@ gitops-runtime:
     global:
       image:
         repository: xeonalex/personal-argocd-dev
-        tag: 2.12-update-2
+        tag: 2.12-health-errors-0
     configs:
       params:
         server.basehref: /argocd # /argocd path
