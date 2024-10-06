@@ -11,10 +11,10 @@ gitops-runtime:
       podGCDeleteDelayDuration: '300s'
       # replicas: 1
   argo-cd:
-    global:
-      image:
-        repository: xeonalex/personal-argocd-dev
-        tag: 2.12-revisions-15
+    # global:
+    #   image:
+    #     repository: xeonalex/personal-argocd-dev
+    #     tag: 2.12-revisions-15
     configs:
       params:
         server.basehref: /argocd # /argocd path
