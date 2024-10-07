@@ -113,9 +113,9 @@ gitops-runtime:
       cm:
         codefresh.reporterVersion: v2
     eventReporter:
-      image:
-        repository: xeonalex/personal-argocd-dev
-        tag: 2.12-revisions-15
+      # image:
+      #   repository: xeonalex/personal-argocd-dev
+      #   tag: 2.12-revisions-15
       replicas: 1
       # env:
       #   - name: USE_GRPC
