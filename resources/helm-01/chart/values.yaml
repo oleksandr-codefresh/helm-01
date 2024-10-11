@@ -12,94 +12,25 @@ gitops-runtime:
       # replicas: 1
   argo-cd:
     extraObjects:
-    - apiVersion: apps/v1
-      kind: Deployment
+    - apiVersion: networking.k8s.io/v1
+      kind: Ingress
       metadata:
-        labels:
-          app.kubernetes.io/name: acr-controller
-          app.kubernetes.io/part-of: argocd
-          app.kubernetes.io/component: acr-controller
-        name: acr-controller
+        annotations:
+          nginx.ingress.kubernetes.io/backend-protocol: HTTP
+        name: argocd-server
       spec:
-        replicas: 1
-        selector:
-          matchLabels:
-            app.kubernetes.io/name: acr-controller
-        template:
-          metadata:
-            labels:
-              app.kubernetes.io/name: acr-controller
-          spec:
-            serviceAccountName: acr-controller
-            containers:
-              - name: acr-controller
-                image: xeonalex/personal-argocd-dev:2.12-revisions-15
-                imagePullPolicy: Always
-                args:
-                  - /usr/local/bin/argocd-application-change-revision-controller
-                env:
-                  - name: ARGOCD_SERVER
-                    value: "http://argo-cd-server:80"
-                  - name: ARGOCD_TOKEN
-                    valueFrom:
-                      secretKeyRef:
-                        key: token
-                        name: argocd-token
-                  - name: ARGOCD_SERVER_ROOTPATH
-                    valueFrom:
-                      configMapKeyRef:
-                        key: server.rootpath
-                        name: argocd-cmd-params-cm
-                        optional: true
-                  - name: ARGOCD_APPLICATION_NAMESPACES
-                    valueFrom:
-                      configMapKeyRef:
-                        name: argocd-cmd-params-cm
-                        key: application.namespaces
-                        optional: true
-                  - name: ACR_CONTROLLER_LOGFORMAT
-                    valueFrom:
-                      configMapKeyRef:
-                        name: argocd-cmd-params-cm
-                        key: acr.log.format
-                        optional: true
-                  - name: ACR_CONTROLLER_LOG_LEVEL
-                    valueFrom:
-                      configMapKeyRef:
-                        name: argocd-cmd-params-cm
-                        key: acr.log.level
-                        optional: true
-                  - name: ACR_CONTROLLER_LISTEN_ADDRESS
-                    valueFrom:
-                      configMapKeyRef:
-                        name: argocd-cmd-params-cm
-                        key: acr.listen.address
-                        optional: true
-                ports:
-                  - containerPort: 8090
-                    name: health
-                livenessProbe:
-                  httpGet:
-                    path: /healthz?full=true
-                    port: health
-                  initialDelaySeconds: 3
-                  periodSeconds: 30
-                  timeoutSeconds: 5
-                readinessProbe:
-                  httpGet:
-                    path: /healthz
-                    port: health
-                  initialDelaySeconds: 3
-                  periodSeconds: 30
-                securityContext:
-                  allowPrivilegeEscalation: false
-                  readOnlyRootFilesystem: true
-                  runAsNonRoot: true
-                  capabilities:
-                    drop:
-                      - ALL
-                  seccompProfile:
-                    type: RuntimeDefault
+        ingressClassName: nginx-public
+        rules:
+          - host: alex-hermes-local.rnd.sandbox.codefresh.io
+            http:
+              paths:
+                - backend:
+                    service:
+                      name: argo-cd-server
+                      port:
+                        number: 80
+                  path: /argocd
+                  pathType: Prefix
 
     # global:
     #   image:
