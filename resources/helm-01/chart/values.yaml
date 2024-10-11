@@ -202,6 +202,8 @@ gitops-runtime:
       #   replicas: 0
       # sensor:
       #   replicas: 0
+    acrController:
+      enabled: true
   gitops-operator:
     # image:
     #   repository: quay.io/codefresh/codefresh-gitops-operator
