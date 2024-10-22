@@ -1,9 +1,0 @@
-apiVersion: codefresh.io/v1beta1
-kind: Product
-metadata:
-  name: test
-spec:
-  promotionTemplate:
-    versionSource:
-      file: dsd.yaml
-      jsonPath: $.sdssdsd
