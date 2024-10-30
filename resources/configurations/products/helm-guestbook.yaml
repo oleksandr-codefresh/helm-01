@@ -1,0 +1,42 @@
+# apiVersion: codefresh.io/v1beta1
+# kind: Product
+# metadata:
+#   name: helm-guestbook
+#   labels:
+#     dfdf: dffd
+# spec:
+#   promotionTemplateRef: gs-promotion-template
+#   # promotionTemplate:
+#   #   # Version Source Configuration:
+#   #   # Specifies the file and JSON path used to retrieve the application version for display in the dashboard.
+#   #   versionSource:
+#   #     file: version.yaml  # The file where the version is stored.
+#   #     jsonPath: $.appVersionInline  # JSON path to the version within the specified file.
+#   #   promotion:
+#   #     Chart.yaml:  # Attributes from Chart.yaml to be promoted.
+#   #       jsonPaths:
+#   #         - $.appVersion  # Promotes the application version.
+#   #         - $.version  # Promotes the version.
+#   #         - $.dependencies  # Promotes dependencies listed in the file.
+#   #     version.yaml:  # Attributes from Chart.yaml to be promoted.
+#   #       jsonPaths:
+#   #         - $.appVersionInline  # Promotes the application version.
+#   #     values.yaml:  # Attributes from values.yaml to be promoted.
+#   #       jsonPaths:
+#   #         - $..image  # Promotes the image specifications.
+#   #     requirements.yaml:  # Attributes from requirements.yaml to be promoted.
+#   #       jsonPaths:
+#   #         - "$.dependencies"  # Promotes dependencies.
+#   promotionFlows:
+#     - name: to-prod
+#       gitTriggerSelectors:
+#         - key: commitMessage
+#           operator: In
+#           values:
+#             - '*deploy*'
+#     - name: demo
+#       gitTriggerSelectors:
+#         - key: commitMessage
+#           operator: In
+#           values:
+#             - "*[demo]"
