@@ -5,5 +5,6 @@ name: codefresh-gitops-runtime
 version: 0.13.4
 dependencies:
   - name: gitops-runtime
-    repository: oci://quay.io/codefresh
-    version: 0.13.4
+    repository: oci://quay.io/codefresh/dev
+    # version: 0.13.4
+    version: 0.0.0-chore-cr-25773-bump-app-version-9ff4641
