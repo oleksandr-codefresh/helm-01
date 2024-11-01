@@ -141,6 +141,7 @@ gitops-runtime:
     #   tag: cr-24411-vuln-fixes
     env:
       ARGO_CD_URL: argo-cd-server:80/argocd # /argocd path
+      AP_URL: https://862554fc28bb.ngrok.app # local app-proxy
   global:
     # image:
     #   repository: docker.io/xeonalex/personal-argocd-dev
