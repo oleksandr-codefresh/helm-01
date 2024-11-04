@@ -11,4 +11,4 @@ spec:
       dependsOn:
         - dev
       policy:
-        action: commit
+        action: pr
