@@ -46,7 +46,7 @@ gitops-runtime:
     eventReporter:
       image:
         repository: xeonalex/personal-argocd-dev
-        tag: 2.12-cond-warn-2
+        tag: 2.12-refactor-2-0
       replicas: 1
       # env:
       #   - name: USE_GRPC
