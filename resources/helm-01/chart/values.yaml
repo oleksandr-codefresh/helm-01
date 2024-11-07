@@ -32,10 +32,10 @@ gitops-runtime:
                   path: /argocd
                   pathType: Prefix
 
-    # global:
-    #   image:
-    #     repository: xeonalex/personal-argocd-dev
-    #     tag: 2.12-revisions-15
+    global:
+      image:
+        repository: xeonalex/personal-argocd-dev
+        tag: 2.12-multi-0
     configs:
       params:
         server.basehref: /argocd # /argocd path
@@ -44,9 +44,9 @@ gitops-runtime:
       cm:
         codefresh.reporterVersion: v2
     eventReporter:
-      image:
-        repository: xeonalex/personal-argocd-dev
-        tag: 2.12-refactor-2-0
+      # image:
+      #   repository: xeonalex/personal-argocd-dev
+      #   tag: 2.12-refactor-2-0
       replicas: 1
       # env:
       #   - name: USE_GRPC
