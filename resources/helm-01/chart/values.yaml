@@ -51,6 +51,13 @@ gitops-runtime:
       # env:
       #   - name: USE_GRPC
       #     value: "true"
+      resources:
+        requests:
+          cpu: "0.1"
+          memory: "100Mi"
+        limits:
+          cpu: "0.3"
+          memory: "300Mi"
     repoServer:
       # image:
       #   repository: docker.io/pashacodefresh/argocd
