@@ -47,7 +47,7 @@ gitops-runtime:
       # image:
       #   repository: xeonalex/personal-argocd-dev
       #   tag: 2.12-refactor-2-0
-      replicas: 1
+      replicas: 5
       # env:
       #   - name: USE_GRPC
       #     value: "true"
