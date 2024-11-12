@@ -56,8 +56,11 @@ gitops-runtime:
           cpu: "0.1"
           memory: "100Mi"
         limits:
-          cpu: "0.3"
-          memory: "300Mi"
+          cpu: "0.1"
+          memory: "100Mi"
+        # limits:
+        #   cpu: "0.3"
+        #   memory: "300Mi"
     repoServer:
       # image:
       #   repository: docker.io/pashacodefresh/argocd
