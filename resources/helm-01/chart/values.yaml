@@ -34,7 +34,7 @@ gitops-runtime:
 
     global:
       image:
-        repository: xeonalex/personal-argocd-dev
+        # repository: xeonalex/personal-argocd-dev
         tag: 2.12-multi-1
     configs:
       params:
