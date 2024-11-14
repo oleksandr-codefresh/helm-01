@@ -62,9 +62,9 @@ gitops-runtime:
         #   cpu: "0.3"
         #   memory: "300Mi"
     repoServer:
-      image:
-        repository: quay.io/codefresh/argocd
-        tag: v2.12.3-2024.11.14-d7a4c4e7e
+      # image:
+      #   repository: quay.io/codefresh/argocd
+      #   tag: v2.12.3-2024.11.14-d7a4c4e7e
       replicas: 1
       volumes:
         - configMap:
