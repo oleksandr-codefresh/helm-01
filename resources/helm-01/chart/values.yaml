@@ -34,7 +34,7 @@ gitops-runtime:
 
     global:
       image:
-        # repository: xeonalex/personal-argocd-dev
+        repository: xeonalex/personal-argocd-dev
         tag: 2.12-multi-1
     configs:
       params:
@@ -63,7 +63,7 @@ gitops-runtime:
         #   memory: "300Mi"
     repoServer:
       image:
-        # repository: docker.io/pashacodefresh/argocd
+        repository: quay.io/codefresh/argocd
         tag: v2.12.3-2024.11.14-d7a4c4e7e
       replicas: 1
       volumes:
