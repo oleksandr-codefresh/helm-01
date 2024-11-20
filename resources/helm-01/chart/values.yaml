@@ -51,6 +51,9 @@ gitops-runtime:
       # env:
       #   - name: USE_GRPC
       #     value: "true"
+      env:
+        - name: CODEFRESH_RUNTIME_VERSION
+          value: "0.1.63"
       resources:
         requests:
           cpu: "0.1"
