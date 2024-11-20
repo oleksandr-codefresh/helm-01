@@ -53,7 +53,7 @@ gitops-runtime:
       #     value: "true"
       env:
         - name: CODEFRESH_RUNTIME_VERSION
-          value: "0.1.63"
+          value: "0.1.64"
       resources:
         requests:
           cpu: "0.1"
