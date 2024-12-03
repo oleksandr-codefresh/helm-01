@@ -2,9 +2,9 @@ apiVersion: v2
 appVersion: 1.0.0
 description: Codefresh gitops runtime umbrella chart
 name: codefresh-gitops-runtime
-version: 0.14.0
+version: 0.14.1
 dependencies:
   - name: gitops-runtime
-    repository: oci://quay.io/codefresh/dev
-    # version: 0.14.0
-    version: 0.0.0-feat-cr-23668-argo-cd-multi-source-reporting
+    repository: oci://quay.io/codefresh
+    version: 0.14.1
+    # version: 0.0.0-feat-cr-23668-argo-cd-multi-source-reporting
