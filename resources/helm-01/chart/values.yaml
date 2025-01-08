@@ -35,7 +35,7 @@ gitops-runtime:
     global:
       image:
         repository: xeonalex/personal-argocd-dev
-        tag: 2.13-upgrade-0
+        tag: 2.13.3-upgrade-0
     configs:
       params:
         server.basehref: /argocd # /argocd path
