@@ -5,6 +5,6 @@ name: codefresh-gitops-runtime
 version: 0.15.1
 dependencies:
   - name: gitops-runtime
-    repository: oci://quay.io/codefresh
-    version: 0.15.1
-    # version: 0.0.0-feat-cr-23668-argo-cd-multi-source-reporting
+    repository: oci://quay.io/codefresh/dev
+    # version: 0.15.1
+    version: 0.0.0-chore-cr-26738-argo-cd-2.13.3-9055e32

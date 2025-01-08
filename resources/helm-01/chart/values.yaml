@@ -32,10 +32,10 @@ gitops-runtime:
                   path: /argocd
                   pathType: Prefix
 
-    global:
-      image:
-        repository: xeonalex/personal-argocd-dev
-        tag: 2.13.3-upgrade-0
+    # global:
+    #   image:
+    #     repository: xeonalex/personal-argocd-dev
+    #     tag: 2.13.3-upgrade-0
     configs:
       params:
         server.basehref: /argocd # /argocd path
