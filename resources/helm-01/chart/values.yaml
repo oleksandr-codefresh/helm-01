@@ -4,8 +4,9 @@ gitops-runtime:
     config:
       cors: http://local.codefresh.io
       argoCdUrl: http://argo-cd-server:80/argocd # /argocd path
-    # image:
-    #   tag: 1.2989.3
+    image:
+      repository: quay.io/codefresh/dev/cap-app-proxy
+      tag: 1.3204.1-CR-multisource-test-15e9272
   argo-workflows:
     controller:
       podGCDeleteDelayDuration: '300s'
