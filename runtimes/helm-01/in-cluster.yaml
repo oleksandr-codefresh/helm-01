@@ -15,7 +15,7 @@ spec:
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,configurations/**/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,helm-01/cf-gitops-runtime.yaml,helm-01/eks-local.yaml,runtimes/helm-01/**/*.yaml,runtimes/helm-01/*.yaml,test/integration.config.yaml,test/integration.secret.yaml}
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,configurations/**/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,helm-01/cf-gitops-runtime.yaml,helm-01/eks-local.yaml,runtimes/helm-01/**/*.yaml,runtimes/helm-01/*.yaml,test/integration.config.yaml,test/integration.secret.yaml,tssss/integration.config.yaml,tssss/integration.secret.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git
