@@ -33,10 +33,10 @@ gitops-runtime:
                   path: /argocd
                   pathType: Prefix
 
-    global:
-      image:
+    # global:
+      # image:
         # repository: xeonalex/personal-argocd-dev
-        tag: v2.13.3-2025.1.9-67d01f9e0
+        # tag: v2.13.3-2025.1.9-67d01f9e0
     configs:
       params:
         server.basehref: /argocd # /argocd path
@@ -69,9 +69,9 @@ gitops-runtime:
               end
               return obj
     eventReporter:
-      # image:
-      #   repository: xeonalex/personal-argocd-dev
-      #   tag: 2.12-refactor-2-0
+      image:
+        # repository: xeonalex/personal-argocd-dev
+        tag: v2.13.3-2025.1.14-f019b07b9
       replicas: 5
       # env:
       #   - name: USE_GRPC
