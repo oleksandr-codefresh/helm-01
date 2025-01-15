@@ -7,4 +7,4 @@ dependencies:
   - name: gitops-runtime
     repository: oci://quay.io/codefresh/dev
     # version: 0.15.1
-    version: 0.0.0-chore-cr-26738-argo-cd-2.13.3-9055e32
+    version: 0.0.0-fix-cr-26732-bump-x-crypto-de9ca3a
