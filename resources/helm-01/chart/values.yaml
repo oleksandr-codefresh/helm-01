@@ -1,4 +1,6 @@
 gitops-runtime:
+  cf-argocd-extras:
+    enabled: true
   app-proxy:
     replicaCount: 1
     config:
