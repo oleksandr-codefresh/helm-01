@@ -42,6 +42,7 @@ gitops-runtime:
         server.basehref: /argocd # /argocd path
         server.rootpath: /argocd # /argocd path
         # controller.repo.server.timeout.seconds: "300"
+        controller.log.level: debug
       cm:
         codefresh.reporterVersion: v2
         resource.customizations.actions.argoproj.io_Rollout: |
@@ -150,6 +151,7 @@ gitops-runtime:
       #   repository: docker.io/pashacodefresh/argocd
       #   tag: latest
       replicas: 1
+
     server:
       # image:
       #   repository: docker.io/pashacodefresh/argocd
