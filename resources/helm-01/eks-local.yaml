@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/oleksandr-codefresh/eks-local_git-source.git
     path: resources_eks-local
-    targetRevision: main
+    # targetRevision: main
     directory:
       include: '*'
       exclude: ''
