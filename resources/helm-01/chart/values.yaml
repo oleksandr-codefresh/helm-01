@@ -11,6 +11,11 @@ gitops-runtime:
               secretKeyRef:
                 key: token
                 name: argocd-token
+          SOURCES_SERVER_ARGO_CD_SERVER:
+            valueFrom:
+              configMapKeyRef:
+                key: argoCdUrl
+                name: cap-app-proxy-cm
   app-proxy:
     replicaCount: 1
     config:
