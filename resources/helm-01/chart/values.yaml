@@ -5,6 +5,12 @@ gitops-runtime:
       container:
         image:
           tag: 2025.01.27-6069b19
+        env:
+          SOURCES_SERVER_ARGO_CD_TOKEN:
+            valueFrom:
+              secretKeyRef:
+                key: token
+                name: argocd-token
   app-proxy:
     replicaCount: 1
     config:
