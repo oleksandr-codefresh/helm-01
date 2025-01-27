@@ -1,6 +1,10 @@
 gitops-runtime:
   cf-argocd-extras:
     enabled: true
+    sourcesServer:
+      container:
+        image:
+          tag: 2025.01.27-6069b19
   app-proxy:
     replicaCount: 1
     config:
