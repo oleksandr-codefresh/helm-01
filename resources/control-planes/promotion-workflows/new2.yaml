@@ -7,7 +7,7 @@ kind: WorkflowTemplate
 metadata:
   name: new2
   annotations:
-    sdsds: sdd
+    sdsds: sddmy-new-commit
     version: 0.0.1
     codefresh.io/workflow-origin: promotion
     argo-hub/version: 0.0.2
