@@ -1,0 +1,56 @@
+gitops-runtime:
+  app-proxy:
+    env:
+      CORS: >-
+        http://local.codefresh.io,https://g.codefresh.io,https://sandbox-1.codefresh.io,https://sandbox-2.codefresh.io,https://sandbox-3.codefresh.io
+    image:
+      repository: quay.io/codefresh/dev/cap-app-proxy
+      tag: CR-26342-support-byoa
+  argo-cd:
+    enabled: false
+  cf-argocd-extras:
+    enabled: true
+    eventReporter:
+      enabled: true
+    libraryMode: true
+  gitops-operator:
+    argoCdNotifications:
+      image:
+        repository: quay.io/codefresh/argocd
+        tag: v2.13.3-2025.2.12-7bfd6c858
+      imageOverride: true
+    enabled: true
+  global:
+    codefresh:
+      accountId: 65c5f89ca4bb5cd2c5d9c415
+      url: https://alexs-platform.ngrok.io
+      userToken:
+        secretKeyRef:
+          name: codefresh-user-token
+          key: token
+    external-argo-cd:
+      configs:
+        tls:
+          certificates: {}
+      passwordSecretKeyRef:
+        key: password
+        name: argocd-initial-admin-secret
+      redis:
+        port: 6379
+        svc: argocd-redis
+      repoServer:
+        port: 8081
+        svc: argocd-repo-server
+      server:
+        port: 80
+        protocol: http
+        svc: argocd-server
+      username: admin
+    runtime:
+      ingress:
+        className: nginx-public
+        enabled: true
+        hosts:
+          - alex-byoa.rnd.sandbox.codefresh.io
+        skipValidation: true
+      name: byoa
