@@ -3,8 +3,8 @@ gitops-runtime:
     enabled: true
     sourcesServer:
       container:
-        image:
-          tag: 2025.01.27-6069b19
+        # image:
+        #   tag: 2025.01.27-6069b19
         env:
           SOURCES_SERVER_ARGO_CD_TOKEN:
             valueFrom:
