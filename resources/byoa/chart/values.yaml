@@ -22,7 +22,7 @@ gitops-runtime:
     enabled: true
   global:
     codefresh:
-      accountId: 65c5f89ca4bb5cd2c5d9c415
+      accountId: 67bca12b5e470fc3eecfdfb7
       url: https://alexs-platform.ngrok.io
       userToken:
         secretKeyRef:
