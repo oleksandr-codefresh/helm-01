@@ -8,4 +8,4 @@ dependencies:
     repository: oci://quay.io/codefresh
     # version: 0.16.1
     repository: oci://quay.io/codefresh/dev
-    version: 0.0.0-feat-cr-26283-source-server-f444401
+    version: 0.0.0-chore-cr-26613-sources-server-manifest-request-5c269e2
