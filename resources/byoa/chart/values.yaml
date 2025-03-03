@@ -5,7 +5,7 @@ gitops-runtime:
         http://local.codefresh.io,https://g.codefresh.io,https://sandbox-1.codefresh.io,https://sandbox-2.codefresh.io,https://sandbox-3.codefresh.io
     image:
       repository: quay.io/codefresh/dev/cap-app-proxy
-      tag: CR-26342-support-byoa-a91f80a
+      tag: 1.3313.0-CR-26342-support-byoa-a91f80a
   argo-cd:
     enabled: false
   cf-argocd-extras:
