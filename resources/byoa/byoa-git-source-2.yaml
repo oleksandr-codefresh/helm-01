@@ -12,7 +12,7 @@ spec:
   sources:
     - repoURL: https://github.com/oleksandr-codefresh/eks-local_git-source.git
       path: byoa-git-source
-      targetRevision: main
+      targetRevision: HEAD
       directory:
         include: '*'
         exclude: ''
