@@ -3,7 +3,7 @@ kind: PromotionPolicy
 metadata:
   name: test
 spec:
-  priority: 1
+  priority: '1'
   selector:
     product:
       names:
