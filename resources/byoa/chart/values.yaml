@@ -54,3 +54,4 @@ gitops-runtime:
           - alex-byoa.rnd.sandbox.codefresh.io
         skipValidation: true
       name: byoa
+      isConfigurationRuntime: true
