@@ -12,6 +12,10 @@ gitops-runtime:
     enabled: true
     eventReporter:
       enabled: true
+      container:
+        image:
+          registry: quay.io/codefresh/dev
+          tag: 0.3.8-cr-27649-missing-delete-events-2-776e503
     libraryMode: true
   gitops-operator:
     argoCdNotifications:
