@@ -9,7 +9,7 @@ spec:
   promotionTemplate:
   #   # Version Source Configuration:
   #   # Specifies the file and JSON path used to retrieve the application version for display in the dashboard.
-    versionSource:
+    versionSource-:
       file: version.yaml  # The file where the version is stored.
       jsonPath: $.appVersionInline  # JSON path to the version within the specified file.
   #   promotion:
