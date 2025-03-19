@@ -116,6 +116,6 @@ gitops-runtime:
           - alex-hermes-local.rnd.sandbox.codefresh.io
         protocol: https
       name: helm-01
-      isConfigurationRuntime: false
+      isConfigurationRuntime: true
   installer:
     skipValidation: true
