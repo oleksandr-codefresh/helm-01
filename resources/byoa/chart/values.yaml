@@ -1,5 +1,7 @@
 gitops-runtime:
   app-proxy:
+    config:
+      argoCdUrl: http://argo-cd-server:80/argocd
     env:
       CORS: >-
         http://local.codefresh.io,https://g.codefresh.io,https://sandbox-1.codefresh.io,https://sandbox-2.codefresh.io,https://sandbox-3.codefresh.io
@@ -11,6 +13,8 @@ gitops-runtime:
       enabled: true
     libraryMode: true
   gitops-operator:
+    env:
+      ARGO_CD_URL: argo-cd-server:80/argocd
     argoCdNotifications:
       image:
         repository: quay.io/codefresh/argocd
