@@ -8,13 +8,6 @@ gitops-runtime:
   argo-cd:
     enabled: false
   gitops-operator:
-    # env:
-    #   ARGO_CD_URL: argo-cd-server:80/argocd
-    # argoCdNotifications:
-    #   image:
-    #     repository: quay.io/codefresh/argocd
-    #     tag: v2.13.3-2025.2.12-7bfd6c858
-    #   imageOverride: true
     enabled: true
   global:
     codefresh:
@@ -41,7 +34,7 @@ gitops-runtime:
         port: 80
         protocol: http
         svc: argocd-server
-        rootpath: '/argocd'
+        rootpath: /argocd
       username: admin
     runtime:
       ingress:
