@@ -1,19 +1,21 @@
 gitops-runtime:
   cf-argocd-extras:
     enabled: true
-    sourcesServer:
-      container:
-        env:
-          SOURCES_SERVER_ARGO_CD_TOKEN:
-            valueFrom:
-              secretKeyRef:
-                key: token
-                name: argocd-token
-          SOURCES_SERVER_ARGO_CD_SERVER:
-            valueFrom:
-              configMapKeyRef:
-                key: argoCdUrl
-                name: cap-app-proxy-cm
+    eventReporter:
+      enabled: true
+    # sourcesServer:
+    #   container:
+    #     env:
+    #       SOURCES_SERVER_ARGO_CD_TOKEN:
+    #         valueFrom:
+    #           secretKeyRef:
+    #             key: token
+    #             name: argocd-token
+    #       SOURCES_SERVER_ARGO_CD_SERVER:
+    #         valueFrom:
+    #           configMapKeyRef:
+    #             key: argoCdUrl
+    #             name: cap-app-proxy-cm
   app-proxy:
     replicaCount: 1
     config:
@@ -75,6 +77,7 @@ gitops-runtime:
               end
               return obj
     eventReporter:
+      enabled: false
       # image:
       #   tag: v2.13.3-2025.1.9-67d01f9e0
       replicas: 3
