@@ -1,9 +1,9 @@
 gitops-runtime:
   cf-argocd-extras:
-    libraryMode: false
+    # libraryMode: false
     enabled: true
-    eventReporter:
-      enabled: true
+    # eventReporter:
+    #   enabled: true
   app-proxy:
     replicaCount: 1
     config:
@@ -65,7 +65,7 @@ gitops-runtime:
               end
               return obj
     eventReporter:
-      enabled: false
+      # enabled: false
       # image:
       #   tag: v2.13.3-2025.1.9-67d01f9e0
       replicas: 3
