@@ -9,8 +9,9 @@ gitops-runtime:
     enabled: true
   cf-argocd-extras:
     eventReporter:
-      image:
-        tag: 0.3.14-cr-25524-app-error-reporting
+      container:
+        image:
+          tag: 0.3.14-cr-25524-app-error-reporting
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
