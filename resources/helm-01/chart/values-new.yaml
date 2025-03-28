@@ -1,0 +1,112 @@
+gitops-runtime:
+  cf-argocd-extras:
+    # libraryMode: false
+    enabled: true
+    # eventReporter:
+    #   enabled: true
+  app-proxy:
+    replicaCount: 1
+    config:
+      cors: http://local.codefresh.io
+      argoCdUrl: http://argo-cd-server:80/argocd
+  argo-workflows:
+    controller:
+      podGCDeleteDelayDuration: 300s
+  argo-cd:
+    extraObjects:
+      - apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/backend-protocol: HTTP
+          name: argocd-server
+        spec:
+          ingressClassName: nginx-public
+          rules:
+            - host: alex-hermes-local.rnd.sandbox.codefresh.io
+              http:
+                paths:
+                  - backend:
+                      service:
+                        name: argo-cd-server
+                        port:
+                          number: 80
+                    path: /argocd
+                    pathType: Prefix
+    configs:
+      params:
+        server.basehref: /argocd
+        server.rootpath: /argocd
+        controller.log.level: debug
+      cm:
+        codefresh.reporterVersion: v2
+        resource.customizations.actions.argoproj.io_Rollout: |
+          mergeBuiltinActions: true
+          discovery.lua: |
+            actions = {}
+            local fullyPromoted = obj.status.currentPodHash == obj.status.stableRS
+            actions["pause"] = {["disabled"] = fullyPromoted or obj.spec.paused == true}
+            actions["skip-current-step"] = {["disabled"] = obj.spec.strategy.canary == nil or obj.spec.strategy.canary.steps == nil or obj.status.currentStepIndex == table.getn(obj.spec.strategy.canary.steps)}
+            return actions
+          definitions:
+          - name: pause
+            action.lua: |
+              obj.spec.paused = true
+              return obj
+          - name: skip-current-step
+            action.lua: |
+              if obj.status ~= nil then
+                  if obj.spec.strategy.canary ~= nil and obj.spec.strategy.canary.steps ~= nil and obj.status.currentStepIndex < table.getn(obj.spec.strategy.canary.steps) then
+                      if obj.status.pauseConditions ~= nil and table.getn(obj.status.pauseConditions) > 0 then
+                          obj.status.pauseConditions = nil
+                      end
+                      obj.status.currentStepIndex = obj.status.currentStepIndex + 1
+                  end
+              end
+              return obj
+    eventReporter:
+      # enabled: false
+      # image:
+      #   tag: v2.13.3-2025.1.9-67d01f9e0
+      replicas: 3
+      resources:
+        requests:
+          cpu: '0.1'
+          memory: 100Mi
+        limits:
+          cpu: '0.1'
+          memory: 100Mi
+    repoServer:
+      replicas: 1
+      volumes:
+        - configMap:
+            name: helm-sops-config
+          name: cmp-plugin
+    controller:
+      replicas: 1
+    server:
+      replicas: 1
+    acrController:
+      enabled: true
+  gitops-operator:
+    env:
+      ARGO_CD_URL: argo-cd-server:80/argocd
+  global:
+    codefresh:
+      accountId: 67bca12b5e470fc3eecfdfb7
+      url: https://alexs-platform.ngrok.io
+      userToken:
+        secretKeyRef:
+          name: codefresh-user-token
+          key: token
+    runtime:
+      ingress:
+        className: nginx-public
+        enabled: true
+        hosts:
+          - alex-hermes-local.rnd.sandbox.codefresh.io
+        protocol: https
+      name: helm-01
+      isConfigurationRuntime: true
+  installer:
+    skipValidation: true
