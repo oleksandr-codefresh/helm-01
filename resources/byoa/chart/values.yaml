@@ -11,7 +11,9 @@ gitops-runtime:
     eventReporter:
       container:
         image:
-          tag: 0.3.14-cr-25524-app-error-reporting-a08fd34
+          repository: xeonalex/cf-argocd-extras
+          tag: rollback-0
+          # tag: 0.3.15-cr-26351-rollout-rollback-10191b3
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
