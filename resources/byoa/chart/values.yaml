@@ -8,7 +8,14 @@ gitops-runtime:
   gitops-operator:
     enabled: true
   cf-argocd-extras:
-    eventReporter:
+    # eventReporter:
+    #   container:
+    #     image:
+    #       # registry: docker.io
+    #       # repository: xeonalex/cf-argocd-extras
+    #       # tag: rollback-0
+    #       tag: cr-26351-rollout-rollback-c6ac5b1
+    sourcesServer:
       container:
         image:
           # registry: docker.io
