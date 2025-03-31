@@ -60,11 +60,13 @@ gitops-runtime:
           revisionHistoryLimit: 3
           selector:
             matchLabels:
+              test: 1
               app: helm-guestbook
               release: helm-guesbook-dev
           template:
             metadata:
               labels:
+                test: 1
                 app: helm-guestbook
                 release: helm-guesbook-dev
             spec:
