@@ -49,6 +49,41 @@ gitops-runtime:
                           number: 80
                     path: /argocd
                     pathType: Prefix
+      - apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: broken-depl
+          namespace: helm-01
+        spec:
+          progressDeadlineSeconds: 60
+          replicas: 1
+          revisionHistoryLimit: 3
+          selector:
+            matchLabels:
+              app: helm-guestbook
+              release: helm-guesbook-dev
+          template:
+            metadata:
+              labels:
+                app: helm-guestbook
+                release: helm-guesbook-dev
+            spec:
+              containers:
+                - image: xeonalex/guesbook:0.3
+                  imagePullPolicy: IfNotPresent
+                  livenessProbe:
+                    httpGet:
+                      path: /
+                      port: http
+                  name: helm-guestbook
+                  ports:
+                    - containerPort: 80
+                      name: http
+                      protocol: TCP
+                  readinessProbe:
+                    httpGet:
+                      path: /
+                      port: http
 
           # global:
           # image:
