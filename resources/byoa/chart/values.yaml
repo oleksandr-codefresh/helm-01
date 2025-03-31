@@ -11,6 +11,7 @@ gitops-runtime:
     eventReporter:
       container:
         image:
+          registry: docker.io
           repository: xeonalex/cf-argocd-extras
           tag: rollback-0
           # tag: 0.3.15-cr-26351-rollout-rollback-10191b3
