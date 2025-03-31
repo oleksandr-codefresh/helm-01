@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: byoa-managed-cluster-ue1-e2e-cm
+  labels:
+    app.kubernetes.io/managed-by: codefresh
+data: 
+  managed-by-runtime: byoa
