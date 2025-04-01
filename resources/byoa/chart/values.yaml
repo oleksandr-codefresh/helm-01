@@ -25,7 +25,7 @@ gitops-runtime:
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
-      url: https://alexs-platform.ngrok.io
+      url: https://86792f8be875e7bd.gost.shared-services.cf-infra.com
       userToken:
         secretKeyRef:
           name: codefresh-user-token
