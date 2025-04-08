@@ -96,7 +96,7 @@ gitops-runtime:
         server.basehref: /argocd # /argocd path
         server.rootpath: /argocd # /argocd path
         # controller.repo.server.timeout.seconds: "300"
-        controller.log.level: debugd
+        controller.log.level: debug
     eventReporter:
       image:
         # repository: xeonalex/personal-argocd-dev
