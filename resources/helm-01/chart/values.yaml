@@ -87,10 +87,10 @@ gitops-runtime:
       #                 path: /
       #                 port: http
 
-      #     # global:
-      #     # image:
-      #     # repository: xeonalex/personal-argocd-dev
-      #     # tag: v2.13.3-2025.1.9-67d01f9e0
+      global:
+        image:
+          repository: xeonalex/personal-argocd-dev
+          tag: 2.13-grpc-fix-0
     configs:
       params:
         server.basehref: /argocd # /argocd path
