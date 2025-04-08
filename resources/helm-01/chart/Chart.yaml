@@ -8,5 +8,5 @@ dependencies:
     # repository: oci://quay.io/codefresh
     # version: 0.18.0
     repository: oci://quay.io/codefresh/dev
-    version: 0.0.0-feat-cr-26350-custom-rollout-actions-499f0db
+    version: 0.0.0-feat-cr-26350-custom-rollout-actions-64f5c6c
  
