@@ -99,7 +99,7 @@ gitops-runtime:
     eventReporter:
       image:
         # repository: xeonalex/personal-argocd-dev
-        tag: v2.13.3-2025.1.9-67d01f9e0
+        # tag: v2.13.3-2025.1.9-67d01f9e0
       replicas: 3
       # env:
       #   - name: USE_GRPC
