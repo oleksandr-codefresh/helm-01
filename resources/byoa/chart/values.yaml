@@ -18,10 +18,10 @@ gitops-runtime:
     sourcesServer:
       container:
         image:
-          # registry: docker.io
-          # repository: xeonalex/cf-argocd-extras
-          # tag: rollback-0
-          tag: cr-26351-rollout-rollback-c6ac5b1
+          registry: docker.io
+          repository: xeonalex/cf-argocd-extras
+          tag: git-source-0
+          # tag: cr-26351-rollout-rollback-c6ac5b1
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
