@@ -20,7 +20,7 @@ gitops-runtime:
         image:
           registry: docker.io
           repository: xeonalex/cf-argocd-extras
-          tag: git-source-1
+          tag: git-source-2
           # tag: cr-26351-rollout-rollback-c6ac5b1
   global:
     codefresh:
