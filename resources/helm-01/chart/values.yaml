@@ -1,6 +1,14 @@
 gitops-runtime:
   cf-argocd-extras:
+    libraryMode: false
     enabled: true
+    eventReporter:
+      enabled: true
+      container:
+        image:
+          registry: docker.io
+          repository: xeonalex/cf-argocd-extras
+          tag: change-revision-0
     sourcesServer:
       container:
         # image:
@@ -97,6 +105,7 @@ gitops-runtime:
         # controller.repo.server.timeout.seconds: "300"
         controller.log.level: debug
     eventReporter:
+      enabled: false
       # image:
         # repository: xeonalex/personal-argocd-dev
         # tag: v2.13.3-2025.1.9-67d01f9e0
