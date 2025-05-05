@@ -1,5 +1,5 @@
 gitops-runtime:
-  # cf-argocd-extras:
+  cf-argocd-extras:
     # libraryMode: false
     # enabled: true
     # eventReporter:
