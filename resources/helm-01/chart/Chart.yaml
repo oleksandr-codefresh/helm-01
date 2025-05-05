@@ -8,5 +8,5 @@ dependencies:
     # repository: oci://quay.io/codefresh
     # version: 0.19.0
     repository: oci://quay.io/codefresh/dev
-    version: 0.0.0-feat-cr-28096-new-event-reporter-default-6de5d0b
+    version: 0.0.0-feat-cr-28096-new-event-reporter-default-b7ab189
  
