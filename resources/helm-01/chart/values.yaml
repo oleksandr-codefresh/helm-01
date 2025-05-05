@@ -110,7 +110,7 @@ gitops-runtime:
         # controller.repo.server.timeout.seconds: "300"
         controller.log.level: debug
     eventReporter:
-      enabled: false
+      enabled: true
       # image:
         # repository: xeonalex/personal-argocd-dev
         # tag: v2.13.3-2025.1.9-67d01f9e0
