@@ -1,19 +1,19 @@
 gitops-runtime:
-  cf-argocd-extras:
-    libraryMode: false
-    enabled: true
-    eventReporter:
-      enabled: true
-      container:
-        image:
-          registry: docker.io
-          repository: xeonalex/cf-argocd-extras
-          tag: change-revision-0
-      configMaps:
-        cmd-params-cm:
-          enabled: true
-          data:
-            repo.server: argo-cd-repo-server:8081
+  # cf-argocd-extras:
+    # libraryMode: false
+    # enabled: true
+    # eventReporter:
+    #   enabled: true
+    #   container:
+    #     image:
+    #       registry: docker.io
+    #       repository: xeonalex/cf-argocd-extras
+    #       tag: change-revision-0
+    #   configMaps:
+    #     cmd-params-cm:
+    #       enabled: true
+    #       data:
+    #         repo.server: argo-cd-repo-server:8081
     sourcesServer:
       container:
         # image:
