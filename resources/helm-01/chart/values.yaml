@@ -2,13 +2,13 @@ gitops-runtime:
   cf-argocd-extras:
     # libraryMode: false
     # enabled: true
-    # eventReporter:
-    #   enabled: true
-    #   container:
-    #     image:
-    #       registry: docker.io
-    #       repository: xeonalex/cf-argocd-extras
-    #       tag: change-revision-0
+    eventReporter:
+      container:
+        image:
+          # registry: docker.io
+          # repository: xeonalex/cf-argocd-extras
+          # tag: change-revision-0
+          tag: cr-28681-no-omit-empty-for-git-source-83f75b8  
     #   configMaps:
     #     cmd-params-cm:
     #       enabled: true
