@@ -14,14 +14,12 @@ gitops-runtime:
           registry: docker.io
           repository: xeonalex/cf-argocd-extras
           tag: git-source-3
-          # tag: cr-26351-rollout-rollback-c6ac5b1
     sourcesServer:
       container:
         image:
           registry: docker.io
           repository: xeonalex/cf-argocd-extras
           tag: git-source-3
-          # tag: cr-26351-rollout-rollback-c6ac5b1
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
@@ -57,4 +55,4 @@ gitops-runtime:
           - alex-byoa.rnd.sandbox.codefresh.io
         skipValidation: true
       name: byoa
-      isConfigurationRuntime: true
+      isConfigurationRuntime: false
