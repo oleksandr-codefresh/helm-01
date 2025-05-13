@@ -6,4 +6,4 @@ version: 0.19.1
 dependencies:
   - name: gitops-runtime
     repository: oci://quay.io/codefresh/dev
-    version: 0.19.1
+    version: 0.0.0-feat-cr-28681-no-omit-empty-for-git-source-fd70574
