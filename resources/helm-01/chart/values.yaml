@@ -45,7 +45,7 @@ gitops-runtime:
     global:
       image:
         repository: xeonalex/personal-argocd-dev
-        tag: 2.13-grpc-fix-0
+        tag: v3.0.1-merge-0
     extraObjects:
       - apiVersion: networking.k8s.io/v1
         kind: Ingress
