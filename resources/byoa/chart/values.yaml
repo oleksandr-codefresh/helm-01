@@ -13,13 +13,13 @@ gitops-runtime:
         image:
           registry: docker.io
           repository: xeonalex/cf-argocd-extras
-          tag: v3-health-status-1
-    sourcesServer:
-      container:
-        image:
-          registry: docker.io
-          repository: xeonalex/cf-argocd-extras
-          tag: v3-health-status-1
+          tag: delete-event-0
+    # sourcesServer:
+    #   container:
+    #     image:
+    #       registry: docker.io
+    #       repository: xeonalex/cf-argocd-extras
+    #       tag: v3-health-status-1
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
