@@ -3,20 +3,20 @@ kind: Application
 metadata:
   name: broken
   labels:
-    codefresh.io/entity: 'git-source'
+    codefresh.io/entity: git-source
     codefresh.io/internal: 'false'
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: cf-git-sources
   sources:
-    - repoURL: https://github.com/oleksandr-codefresh/eks-local_private-git-source.git
-      path: broken
-      targetRevision: main
-      directory:
-        include: '*'
-        exclude: ''
-        recurse: true
+  - repoURL: https://github.com/oleksandr-codefresh/eks-local_private-git-source.git
+    path: byoa-gs
+    targetRevision: main
+    directory:
+      include: '*'
+      exclude: ''
+      recurse: true
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
