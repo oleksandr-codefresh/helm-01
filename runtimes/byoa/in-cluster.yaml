@@ -15,7 +15,7 @@ spec:
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,byoa/boya-gs-private.yaml,byoa/cf-gitops-runtime.yaml,byoa/ue1-e2e-rollout-reporter.yaml,byoa/ue1-e2e-rollouts.yaml,control-planes/**/*.yaml,control-planes/*.yaml,runtimes/byoa/**/*.yaml,runtimes/byoa/*.yaml}
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,byoa/cf-gitops-runtime.yaml,byoa/ue1-e2e-rollout-reporter.yaml,byoa/ue1-e2e-rollouts.yaml,control-planes/**/*.yaml,control-planes/*.yaml,runtimes/byoa/**/*.yaml,runtimes/byoa/*.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git
