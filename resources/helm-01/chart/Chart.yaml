@@ -8,5 +8,5 @@ dependencies:
     # repository: oci://quay.io/codefresh
     # version: 0.19.0
     repository: oci://quay.io/codefresh/dev
-    version: 0.0.0-feat-cr-28096-new-event-reporter-default-27d30a4
+    version: 0.0.0-chore-cr-28173-argo-helm-8x-38f41cf
  

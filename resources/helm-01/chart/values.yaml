@@ -2,13 +2,13 @@ gitops-runtime:
   cf-argocd-extras:
     # libraryMode: false
     # enabled: true
-    eventReporter:
-      container:
-        image:
-          # registry: docker.io
-          # repository: xeonalex/cf-argocd-extras
-          # tag: change-revision-0
-          tag: cr-28681-no-omit-empty-for-git-source-83f75b8  
+    # eventReporter:
+    #   container:
+    #     image:
+    #       # registry: docker.io
+    #       # repository: xeonalex/cf-argocd-extras
+    #       # tag: change-revision-0
+    #       tag: cr-28681-no-omit-empty-for-git-source-83f75b8  
     #   configMaps:
     #     cmd-params-cm:
     #       enabled: true
@@ -42,10 +42,10 @@ gitops-runtime:
       podGCDeleteDelayDuration: '300s'
       # replicas: 1
   argo-cd:
-    global:
-      image:
-        repository: xeonalex/personal-argocd-dev
-        tag: v3.0.1-merge-1
+    # global:
+    #   image:
+    #     repository: xeonalex/personal-argocd-dev
+    #     tag: v3.0.1-merge-1
     extraObjects:
       - apiVersion: networking.k8s.io/v1
         kind: Ingress
