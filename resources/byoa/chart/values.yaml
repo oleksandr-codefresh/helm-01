@@ -13,7 +13,7 @@ gitops-runtime:
         image:
           registry: docker.io
           repository: xeonalex/cf-argocd-extras
-          tag: delete-event-0
+          tag: delete-event-1
     # sourcesServer:
     #   container:
     #     image:
