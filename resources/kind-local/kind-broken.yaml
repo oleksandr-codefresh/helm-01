@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kind-broken
+  labels:
+    codefresh.io/entity: 'git-source'
+    codefresh.io/internal: 'false'
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: cf-git-sources
+  sources:
+    - repoURL: https://github.com/oleksandr-codefresh/eks-local_git-sourcebb.git
+      path: bgd
+      targetRevision: main
+      directory:
+        include: '*'
+        exclude: ''
+        recurse: true
+  destination:
+    namespace: kind-local
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
