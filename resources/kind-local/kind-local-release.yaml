@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kind-local-release
+  labels:
+    codefresh.io/entity: runtime
+    codefresh.io/internal: 'true'
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/oleksandr-codefresh/helm-01.git
+    targetRevision: HEAD
+    path: resources/kind-local/chart
+    helm:
+      releaseName: kind-local-release
+  destination:
+    namespace: kind-local
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
