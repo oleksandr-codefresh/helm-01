@@ -2,6 +2,7 @@ gitops-runtime:
   app-proxy:
     config:
       cors: http://local.codefresh.io
+      graphqlPlayground: true
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
