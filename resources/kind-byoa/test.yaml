@@ -4,7 +4,7 @@ metadata:
   name: test
 spec:
   source:
-    repoURL: https://github.dev/oleksandr-codefresh/eks-local_git-source.git
+    repoURL: https://github.com/oleksandr-codefresh/eks-local_git-source.git
     path: kind-byoa-gs-restricted
     targetRevision: main
     directory:
@@ -12,18 +12,18 @@ spec:
       exclude: ''
       recurse: true
   destinations:
-  - server: 'https://kubernetes.default.svc'
-    name: 'in-cluster'
-    namespace: 'test-dev'
+  - server: https://kubernetes.default.svc
+    namespace: test-dev
+    name: in-cluster
   - server: '*'
-    name: '*'
     namespace: '*'
+    name: '*'
   clusterResourceWhitelist:
   - group: ''
     kind: Namespace
   sourceRepos:
   - '*'
-  sourceNamespace: 'cf-apps'
+  sourceNamespace: cf-apps
   syncPolicy:
     automated:
       allowEmpty: true
