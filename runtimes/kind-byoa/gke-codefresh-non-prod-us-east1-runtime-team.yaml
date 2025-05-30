@@ -5,16 +5,17 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   labels:
     codefresh.io/entity: internal-config
-    codefresh.io/internal: "true"
+    codefresh.io/internal: 'true'
   name: gke-codefresh-non-prod-us-east1-runtime-team
 spec:
   destination:
-    namespace: argocd
+    namespace: default
     server: https://34.138.204.227
   project: default
   source:
     directory:
-      include: '{all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/kind-byoa/*.yaml,runtimes/kind-byoa/**/*.yaml}'
+      include: >-
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,kind-byoa-managed-cluster-gke-codefresh-non-prod-us-east1-runtime-team-cm.yaml,runtimes/kind-byoa/**/*.yaml,runtimes/kind-byoa/*.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git
@@ -25,4 +26,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - allowEmpty=true
+      - allowEmpty=true
