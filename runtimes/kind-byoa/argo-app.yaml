@@ -1,0 +1,104 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io/foreground
+spec:
+  project: default
+  source:
+    chart: argo-cd
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 8.0.13
+    helm:
+      valuesObject:
+        # global:
+        #   image:
+        #     repository: xeonalex/personal-argocd-dev
+        #     tag: 3.0-settings-0
+        configs:
+          cm:
+            accounts.admin: apiKey,login
+            resource.customizations.actions.argoproj.io_Rollout: |
+              mergeBuiltinActions: true
+              discovery.lua: |
+                actions = {}
+                local fullyPromoted = obj.status.currentPodHash == obj.status.stableRS
+                actions["pause"] = {["disabled"] = fullyPromoted or obj.spec.paused == true}
+                actions["skip-current-step"] = {["disabled"] = obj.spec.strategy.canary == nil or obj.spec.strategy.canary.steps == nil or obj.status.currentStepIndex == table.getn(obj.spec.strategy.canary.steps)}
+                return actions
+              definitions:
+              - name: pause
+                action.lua: |
+                  obj.spec.paused = true
+                  return obj
+              - name: skip-current-step
+                action.lua: |
+                  if obj.status ~= nil then
+                      if obj.spec.strategy.canary ~= nil and obj.spec.strategy.canary.steps ~= nil and obj.status.currentStepIndex < table.getn(obj.spec.strategy.canary.steps) then
+                          if obj.status.pauseConditions ~= nil and table.getn(obj.status.pauseConditions) > 0 then
+                              obj.status.pauseConditions = nil
+                          end
+                          obj.status.currentStepIndex = obj.status.currentStepIndex + 1
+                      end
+                  end
+                  return obj
+          params:
+            server.insecure: true
+            server.basehref: /argocd
+            server.rootpath: /argocd
+            controller.log.level: debug
+        extraObjects:
+          - apiVersion: networking.k8s.io/v1
+            kind: Ingress
+            metadata:
+              annotations:
+                nginx.ingress.kubernetes.io/backend-protocol: HTTP
+              name: argocd-server
+            spec:
+              ingressClassName: nginx
+              rules:
+                - http:
+                    paths:
+                      - backend:
+                          service:
+                            name: argocd-server
+                            port:
+                              number: 80
+                        path: /argocd
+                        pathType: Prefix
+                      - backend:
+                          service:
+                            name: internal-router
+                            port:
+                              number: 80
+                        path: /webhooks
+                        pathType: Prefix
+                      - backend:
+                          service:
+                            name: internal-router
+                            port:
+                              number: 80
+                        path: /workflows
+                        pathType: Prefix
+                      - backend:
+                          service:
+                            name: internal-router
+                            port:
+                              number: 80
+                        path: /app-proxy
+                        pathType: Prefix
+  destination:
+    name: in-cluster
+    namespace: argocd
+  syncPolicy:
+    # automated:
+    #   prune: true
+    #   selfHeal: true
+    syncOptions:
+      - PrunePropagationPolicy=foreground
+      - Replace=false
+      - PruneLast=false
+      - Validate=true
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=false
