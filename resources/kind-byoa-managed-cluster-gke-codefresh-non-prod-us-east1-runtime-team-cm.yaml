@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kind-byoa-managed-cluster-gke-codefresh-non-prod-us-east1-runtime-team-cm
+  labels:
+    app.kubernetes.io/managed-by: codefresh
+data: 
+  managed-by-runtime: kind-byoa
