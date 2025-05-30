@@ -13,7 +13,10 @@ spec:
       recurse: true
   destinations:
   - server: https://kubernetes.default.svc
-    namespace: test-dev
+    namespace: guestbook-dev
+    name: in-cluster
+  - server: https://kubernetes.default.svc
+    namespace: guestbook-prod
     name: in-cluster
   - server: '*'
     namespace: '*'
