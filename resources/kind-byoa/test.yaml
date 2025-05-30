@@ -1,0 +1,34 @@
+apiVersion: codefresh.io/v1beta1
+kind: RestrictedGitSource
+metadata:
+  name: test
+spec:
+  source:
+    repoURL: https://github.dev/oleksandr-codefresh/eks-local_git-source.git
+    path: kind-byoa-gs-restricted
+    targetRevision: main
+    directory:
+      include: '*'
+      exclude: ''
+      recurse: true
+  destinations:
+  - server: 'https://kubernetes.default.svc'
+    name: 'in-cluster'
+    namespace: 'test-dev'
+  - server: '*'
+    name: '*'
+    namespace: '*'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  sourceRepos:
+  - '*'
+  sourceNamespace: 'cf-apps'
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - allowEmpty=true
+    - CreateNamespace=true
