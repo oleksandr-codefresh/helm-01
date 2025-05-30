@@ -1,6 +1,6 @@
 gitops-runtime:
   app-proxy:
-    replicas: 0
+    replicaCount: 1
     config:
       cors: http://local.codefresh.io
       graphqlPlayground: 'true'
