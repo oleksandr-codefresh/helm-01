@@ -5,7 +5,7 @@ metadata:
 spec:
   source:
     repoURL: https://github.com/oleksandr-codefresh/eks-local_git-source.git
-    path: kind-byoa-gs-restricted-
+    path: kind-byoa-gs-restricted
     targetRevision: main
     directory:
       include: '*'
