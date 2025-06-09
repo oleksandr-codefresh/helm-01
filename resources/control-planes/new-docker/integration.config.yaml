@@ -6,4 +6,4 @@ metadata:
     codefresh.io/entity: integration-config
     codefresh.io/integration-type: registry.dockerhub
 data:
-  username: xeonalex2
+  username: xeonalex
