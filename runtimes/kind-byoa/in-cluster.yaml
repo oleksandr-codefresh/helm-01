@@ -15,7 +15,7 @@ spec:
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,configurations/**/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,kind-byoa/cf-gitops-runtime.yaml,kind-byoa/test.yaml,runtimes/kind-byoa/**/*.yaml,runtimes/kind-byoa/*.yaml}
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,configurations/**/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,dock-test/integration.config.yaml,dock-test/integration.secret.yaml,kind-byoa/cf-gitops-runtime.yaml,kind-byoa/test.yaml,runtimes/kind-byoa/**/*.yaml,runtimes/kind-byoa/*.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git
