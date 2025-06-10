@@ -15,7 +15,7 @@ spec:
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,configurations/**/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,kind-local/kind-broken.yaml,kind-local/kind-local-gs.yaml,kind-local/kind-local-release.yaml,runtimes/kind-local/**/*.yaml,runtimes/kind-local/*.yaml}
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,configurations/**/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,dock-test/integration.config.yaml,dock-test/integration.secret.yaml,kind-local/kind-broken.yaml,kind-local/kind-local-gs.yaml,kind-local/kind-local-release.yaml,runtimes/kind-local/**/*.yaml,runtimes/kind-local/*.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git
