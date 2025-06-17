@@ -17,6 +17,9 @@ gitops-runtime:
       ingressUrl: http://local.codefresh.io:8080
       name: kind-local
       isConfigurationRuntime: true
+  argo-cd:
+    acrController:
+      enabled: false
   installer:
     skipValidation: false
   internal-router:
