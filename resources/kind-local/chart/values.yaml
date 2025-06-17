@@ -19,7 +19,7 @@ gitops-runtime:
       isConfigurationRuntime: true
   argo-cd:
     acrController:
-      enabled: false
+      enabled: true
   installer:
     skipValidation: false
   internal-router:
