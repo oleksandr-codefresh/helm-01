@@ -27,6 +27,6 @@ gitops-runtime:
         enabled: false
       ingressUrl: http://byoa.local-kind.io:7777
       name: kind-byoa
-      isConfigurationRuntime: false
+      isConfigurationRuntime: true
   tunnel-client:
     enabled: false
