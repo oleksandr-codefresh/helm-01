@@ -7,3 +7,5 @@ dependencies:
   - name: gitops-runtime
     repository: oci://quay.io/codefresh
     version: 0.19.2
+    # repository: oci://quay.io/codefresh/dev
+    # version: 0.0.0-chore-cr-28173-argo-helm-8x-706d783
