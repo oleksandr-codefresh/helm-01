@@ -1,0 +1,14 @@
+# DO NOT REMOVE the following attributes:
+# annotations.codefresh.io/workflow-origin (identifies type of Workflow Template as Promotion Workflow)
+# annotations.version (identifies version of Promotion Workflow used)
+# annotations.description (identifies intended use of the Promotion Workflow)
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: byoa
+  annotations:
+    version: 0.0.1
+    codefresh.io/workflow-origin: promotion
+    description: dasdadasdsad
+spec:
+  serviceAccountName: cf-default-promotion-workflows-sa
