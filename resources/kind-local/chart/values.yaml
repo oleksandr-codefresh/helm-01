@@ -18,6 +18,10 @@ gitops-runtime:
       name: kind-local
       isConfigurationRuntime: true
   argo-cd:
+    global:
+      image:
+        repository: xeonalex/personal-argocd-dev
+        tag: 3.0.3-dest-val-0
     acrController:
       enabled: true
   installer:
