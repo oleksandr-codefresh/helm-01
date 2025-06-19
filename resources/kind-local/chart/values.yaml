@@ -21,7 +21,7 @@ gitops-runtime:
     global:
       image:
         repository: xeonalex/personal-argocd-dev
-        tag: 3.0.3-dest-val-0
+        tag: 3.0.2-dest-val-1
     acrController:
       enabled: true
   installer:
