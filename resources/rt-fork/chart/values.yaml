@@ -52,6 +52,26 @@ gitops-runtime:
                           number: 80
                     path: /app-proxy
                     pathType: Prefix
+      - apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/backend-protocol: HTTP
+            # nginx.ingress.kubernetes.io/permanent-redirect: / 
+            nginx.ingress.kubernetes.io/rewrite-target: / 
+          name: runtime-secondary-ingress
+        spec:
+          ingressClassName: nginx
+          rules:
+            - http:
+                paths:
+                  - backend:
+                      service:
+                        name: sources-server
+                        port:
+                          number: 80
+                    path: /sources-server
+                    pathType: Prefix
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
