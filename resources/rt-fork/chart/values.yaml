@@ -20,81 +20,81 @@ gitops-runtime:
   installer:
     skipValidation: false
   argo-cd:
-  configs:
-    cm:
-      accounts.admin: apiKey,login
-    params:
-      server.insecure: true
-      server.basehref: /argocd
-      server.rootpath: /argocd
-      controller.log.level: debug
-  extraObjects:
-    - apiVersion: networking.k8s.io/v1
-      kind: Ingress
-      metadata:
-        annotations:
-          nginx.ingress.kubernetes.io/backend-protocol: HTTP
-          nginx.ingress.kubernetes.io/rewrite-target: /
-          # nginx.ingress.kubernetes.io/permanent-redirect: / 
-        name: runtime-secondary-ingress
-      spec:
-        ingressClassName: nginx
-        rules:
-          - http:
-              paths:
-                - backend:
-                    service:
-                      name: argocd-server
-                      port:
-                        number: 80
-                  path: /sources-server
-                  pathType: Prefix
-                - backend:
-                    service:
-                      name: internal-router
-                      port:
-                        number: 80
-                  path: /repo-server
-                  pathType: Prefix
-    - apiVersion: networking.k8s.io/v1
-      kind: Ingress
-      metadata:
-        annotations:
-          nginx.ingress.kubernetes.io/backend-protocol: HTTP
-        name: runtime-ingress
-      spec:
-        ingressClassName: nginx
-        rules:
-          - http:
-              paths:
-                - backend:
-                    service:
-                      name: argocd-server
-                      port:
-                        number: 80
-                  path: /argocd
-                  pathType: Prefix
-                - backend:
-                    service:
-                      name: internal-router
-                      port:
-                        number: 80
-                  path: /webhooks
-                  pathType: Prefix
-                - backend:
-                    service:
-                      name: internal-router
-                      port:
-                        number: 80
-                  path: /workflows
-                  pathType: Prefix
-                - backend:
-                    service:
-                      name: internal-router
-                      port:
-                        number: 80
-                  path: /app-proxy
-                  pathType: Prefix
+    configs:
+      cm:
+        accounts.admin: apiKey,login
+      params:
+        server.insecure: true
+        server.basehref: /argocd
+        server.rootpath: /argocd
+        controller.log.level: debug
+    extraObjects:
+      - apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/backend-protocol: HTTP
+            nginx.ingress.kubernetes.io/rewrite-target: /
+            # nginx.ingress.kubernetes.io/permanent-redirect: / 
+          name: runtime-secondary-ingress
+        spec:
+          ingressClassName: nginx
+          rules:
+            - http:
+                paths:
+                  - backend:
+                      service:
+                        name: argocd-server
+                        port:
+                          number: 80
+                    path: /sources-server
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /repo-server
+                    pathType: Prefix
+      - apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/backend-protocol: HTTP
+          name: runtime-ingress
+        spec:
+          ingressClassName: nginx
+          rules:
+            - http:
+                paths:
+                  - backend:
+                      service:
+                        name: argocd-server
+                        port:
+                          number: 80
+                    path: /argocd
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /webhooks
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /workflows
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /app-proxy
+                    pathType: Prefix
   internal-router:
     service:
       nodePort: 31243
