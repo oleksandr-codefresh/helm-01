@@ -15,7 +15,7 @@ spec:
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,rt-fork/default-git-source.yaml,rt-fork/rt-fork-release.yaml,runtimes/rt-fork/**/*.yaml,runtimes/rt-fork/*.yaml}
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,configurations/**/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,rt-fork/default-git-source.yaml,rt-fork/rt-fork-release.yaml,runtimes/rt-fork/**/*.yaml,runtimes/rt-fork/*.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git
