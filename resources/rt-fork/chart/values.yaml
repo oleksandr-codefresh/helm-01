@@ -1,0 +1,71 @@
+gitops-runtime:
+  app-proxy:
+    config:
+      cors: http://local.codefresh.io
+      graphqlPlayground: 'true'
+  argo-cd:
+    configs:
+      cm:
+        accounts.admin: apiKey,login
+      params:
+        controller.log.level: debug
+        server.basehref: /argocd
+        server.insecure: true
+        server.rootpath: /argocd
+    extraObjects:
+      - apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/backend-protocol: HTTP
+          name: runtime-ingress
+        spec:
+          ingressClassName: nginx
+          rules:
+            - http:
+                paths:
+                  - backend:
+                      service:
+                        name: argocd-server
+                        port:
+                          number: 80
+                    path: /argocd
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /webhooks
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /workflows
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /app-proxy
+                    pathType: Prefix
+  global:
+    codefresh:
+      accountId: 67bca12b5e470fc3eecfdfb7
+      url: https://alexs-platform.ngrok.io
+      userToken:
+        secretKeyRef:
+          name: codefresh-user-token
+          key: token
+    runtime:
+      ingress:
+        enabled: false
+      ingressUrl: http://runtimes.local.com:7711
+      name: rt-fork
+  installer:
+    skipValidation: false
+  tunnel-client:
+    enabled: false
