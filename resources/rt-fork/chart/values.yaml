@@ -35,7 +35,6 @@ gitops-runtime:
           annotations:
             nginx.ingress.kubernetes.io/backend-protocol: HTTP
             nginx.ingress.kubernetes.io/rewrite-target: /
-            # nginx.ingress.kubernetes.io/permanent-redirect: / 
           name: runtime-secondary-ingress
         spec:
           ingressClassName: nginx
