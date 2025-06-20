@@ -58,7 +58,7 @@ gitops-runtime:
           annotations:
             nginx.ingress.kubernetes.io/backend-protocol: HTTP
             # nginx.ingress.kubernetes.io/permanent-redirect: / 
-            nginx.ingress.kubernetes.io/rewrite-target: / 
+            nginx.ingress.kubernetes.io/rewrite-target: /$2  # Captures the second regex group
           name: runtime-secondary-ingress
         spec:
           ingressClassName: nginx
@@ -70,7 +70,7 @@ gitops-runtime:
                         name: sources-server
                         port:
                           number: 80
-                    path: /sources-server
+                    path: /sources-server/(.*)  # Matches `/api/xxxxx`
                     pathType: Prefix
   global:
     codefresh:
