@@ -16,6 +16,7 @@ gitops-runtime:
         enabled: false
       ingressUrl: http://runtimes.local.com:7711
       name: rt-fork
+      isConfigurationRuntime: true
   installer:
     skipValidation: false
   internal-router:
