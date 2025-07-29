@@ -8,4 +8,4 @@ dependencies:
     # repository: oci://quay.io/codefresh
     repository: oci://quay.io/codefresh/dev
     version: 0.0.0-feat-multi-runtime-9913baf
-    version: 0.22.1
+    # version: 0.22.1
