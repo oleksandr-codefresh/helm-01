@@ -11,10 +11,10 @@ spec:
     targetRevision: 7.9.1 # 2.14
     helm:
       valuesObject:
-        global:
-          image:
+        # global:
+          # image:
         #     repository: xeonalex/personal-argocd-dev
-            tag: latest
+            # tag: latest
         configs:
           cm:
             accounts.admin: apiKey,login
