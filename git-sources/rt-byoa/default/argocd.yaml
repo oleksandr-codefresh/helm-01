@@ -17,6 +17,7 @@ spec:
             # tag: latest
         configs:
           cm:
+            timeout.reconciliation: 20s
             application.resourceTrackingMethod: annotation
             accounts.admin: apiKey,login
             resource.customizations.actions.argoproj.io_Rollout: |
