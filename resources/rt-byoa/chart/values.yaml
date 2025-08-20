@@ -38,3 +38,8 @@ gitops-runtime:
     skipValidation: false
   tunnel-client:
     enabled: false
+  cf-argocd-extras:
+    eventReporter:
+      serviceMonitor:
+        main:
+          enabled: true
