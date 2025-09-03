@@ -57,7 +57,7 @@ spec:
             server.basehref: /argocd
             server.rootpath: /argocd
             controller.log.level: debug
-            otlp.address: alexs-otel.ngrok.io
+            otlp.address: https://alexs-otel.ngrok.io/v1/traces
         extraObjects:
           - apiVersion: networking.k8s.io/v1
             kind: Ingress
