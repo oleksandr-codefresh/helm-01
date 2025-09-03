@@ -15,6 +15,20 @@ spec:
           # image:
         #     repository: xeonalex/personal-argocd-dev
             # tag: latest
+        server:
+          image:
+            repository: xeonalex/personal-argocd-dev
+            tag: 3.0.2-traces-3
+          env:
+            - key: ARGOCD_SERVER_OTLP_ADDRESS
+              value: https://alexs-otel.ngrok.io
+        repoServer:
+          image:
+            repository: xeonalex/personal-argocd-dev
+            tag: 3.0.2-traces-3
+          env:
+            - key: ARGOCD_SERVER_OTLP_ADDRESS
+              value: https://alexs-otel.ngrok.io
         configs:
           cm:
             timeout.reconciliation: 20s
