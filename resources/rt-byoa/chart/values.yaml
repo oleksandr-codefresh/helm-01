@@ -44,6 +44,7 @@ gitops-runtime:
         env:
           OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
         image:
+          registry: quay.io
           repository: codefresh/dev/cf-argocd-extras
           tag: cr-30626-optimize-app-reporter-18aabbe
       # serviceMonitor:
