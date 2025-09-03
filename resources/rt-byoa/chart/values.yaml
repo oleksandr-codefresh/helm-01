@@ -40,6 +40,10 @@ gitops-runtime:
     enabled: false
   cf-argocd-extras:
     eventReporter:
+      container:
+        image:
+          repository: codefresh/dev/cf-argocd-extras
+          tag: cr-30626-optimize-app-reporter-18aabbe
       serviceMonitor:
         main:
           enabled: true
