@@ -42,7 +42,7 @@ gitops-runtime:
     eventReporter:
       container:
         env:
-          OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
+          OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io/v1/traces
         image:
           registry: quay.io
           repository: codefresh/dev/cf-argocd-extras
