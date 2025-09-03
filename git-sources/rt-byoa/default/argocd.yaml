@@ -19,16 +19,10 @@ spec:
           image:
             repository: xeonalex/personal-argocd-dev
             tag: 3.0.2-traces-3
-          env:
-            - name: ARGOCD_SERVER_OTLP_ADDRESS
-              value: https://alexs-otel.ngrok.io
         repoServer:
           image:
             repository: xeonalex/personal-argocd-dev
             tag: 3.0.2-traces-3
-          env:
-            - name: ARGOCD_SERVER_OTLP_ADDRESS
-              value: https://alexs-otel.ngrok.io
         configs:
           cm:
             timeout.reconciliation: 20s
@@ -63,6 +57,7 @@ spec:
             server.basehref: /argocd
             server.rootpath: /argocd
             controller.log.level: debug
+            otlp.address: https://alexs-otel.ngrok.io
         extraObjects:
           - apiVersion: networking.k8s.io/v1
             kind: Ingress
