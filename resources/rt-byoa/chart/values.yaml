@@ -44,6 +44,6 @@ gitops-runtime:
         image:
           repository: codefresh/dev/cf-argocd-extras
           tag: cr-30626-optimize-app-reporter-18aabbe
-      serviceMonitor:
-        main:
-          enabled: true
+      # serviceMonitor:
+      #   main:
+      #     enabled: true
