@@ -42,8 +42,7 @@ gitops-runtime:
     eventReporter:
       container:
         env:
-          - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-            value: https://alexs-otel.ngrok.io
+          OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
         image:
           repository: codefresh/dev/cf-argocd-extras
           tag: cr-30626-optimize-app-reporter-18aabbe
