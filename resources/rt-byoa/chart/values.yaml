@@ -42,7 +42,7 @@ gitops-runtime:
     eventReporter:
       serviceMonitor:
         main:
-          enabled: false
+          enabled: true
       container:
         env:
           OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io/v1/traces
