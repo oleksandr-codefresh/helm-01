@@ -40,6 +40,9 @@ gitops-runtime:
     enabled: false
   cf-argocd-extras:
     eventReporter:
+      serviceMonitor:
+        main:
+          enabled: false
       container:
         env:
           OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io/v1/traces
