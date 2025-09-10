@@ -96,7 +96,7 @@ data:
             },
             "tooltip": {
               "mode": "single",
-              "showColorScale": false,
+              "showColorScale": true,
               "yHistogram": false
             },
             "yAxis": {
@@ -112,8 +112,8 @@ data:
                 "uid": "prometheus"
               },
               "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": "sum by(le) (rate(codefresh_event_reporter_workqueue_latency_seconds_bucket{container=\"resource-reporter\"}[$__rate_interval]))",
+              "editorMode": "builder",
+              "expr": "ceil(sum by(le) (rate(codefresh_event_reporter_workqueue_latency_seconds_bucket{container=\"resource-reporter\"}[$__rate_interval])))",
               "format": "heatmap",
               "fullMetaSearch": false,
               "hide": false,
@@ -199,7 +199,7 @@ data:
               },
               "disableTextWrap": false,
               "editorMode": "builder",
-              "expr": "sum by(le) (rate(codefresh_event_reporter_workqueue_work_duration_seconds_bucket{container=\"resource-reporter\"}[$__rate_interval]))",
+              "expr": "ceil(sum by(le) (rate(codefresh_event_reporter_workqueue_work_duration_seconds_bucket{container=\"resource-reporter\"}[$__rate_interval])))",
               "format": "heatmap",
               "fullMetaSearch": false,
               "hide": false,
@@ -800,7 +800,7 @@ data:
               },
               "disableTextWrap": false,
               "editorMode": "builder",
-              "expr": "sum by(le) (rate(codefresh_event_reporter_workqueue_latency_seconds_bucket{container=\"event-reporter\"}[$__rate_interval]))",
+              "expr": "ceil(sum by(le) (rate(codefresh_event_reporter_workqueue_latency_seconds_bucket{container=\"event-reporter\", queue=\"application_events\"}[$__rate_interval])))",
               "format": "heatmap",
               "fullMetaSearch": false,
               "hide": false,
@@ -886,7 +886,7 @@ data:
               },
               "disableTextWrap": false,
               "editorMode": "builder",
-              "expr": "sum by(le) (rate(codefresh_event_reporter_workqueue_work_duration_seconds_bucket{container=\"event-reporter\"}[$__rate_interval]))",
+              "expr": "ceil(sum by(le) (rate(codefresh_event_reporter_workqueue_work_duration_seconds_bucket{container=\"event-reporter\", queue=\"application_events\"}[$__rate_interval])))",
               "format": "heatmap",
               "fullMetaSearch": false,
               "hide": false,
@@ -1808,7 +1808,7 @@ data:
       "timezone": "browser",
       "title": "event-reporter",
       "uid": "977dfcfe-ed59-428e-9071-b4d321fff374",
-      "version": 1
+      "version": 2
     }
   argo-cd.json: |
     {
