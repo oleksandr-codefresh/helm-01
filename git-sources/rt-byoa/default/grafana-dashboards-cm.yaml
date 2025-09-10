@@ -6679,7 +6679,7 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "sum(rate(codefresh_event_reporter_workqueue_latency_seconds_sum{queue=~\"$workqueue\"}[1m]) / rate(codefresh_event_reporter_workqueue_latency_seconds_count{queue=~\"$workqueue\"}[1m])) by(queue_name)",
+              "expr": "sum(rate(codefresh_event_reporter_workqueue_latency_seconds_sum{queue=~\"$workqueue\"}[1m]) / rate(codefresh_event_reporter_workqueue_latency_seconds_count{queue=~\"$workqueue\"}[1m])) by(queue)",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{queue_name}}",
@@ -6780,7 +6780,7 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "sum(rate(codefresh_event_reporter_workqueue_work_duration_seconds_sum{queue=~\"$workqueue\"}[1m]) / rate(codefresh_event_reporter_workqueue_work_duration_seconds_count{queue=~\"$workqueue\"}[1m])) by(queue_name)",
+              "expr": "sum(rate(codefresh_event_reporter_workqueue_work_duration_seconds_sum{queue=~\"$workqueue\"}[1m]) / rate(codefresh_event_reporter_workqueue_work_duration_seconds_count{queue=~\"$workqueue\"}[1m])) by(queue)",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{queue_name}}",
