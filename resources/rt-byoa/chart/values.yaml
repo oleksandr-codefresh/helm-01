@@ -40,13 +40,13 @@ gitops-runtime:
     enabled: false
   cf-argocd-extras:
     eventReporter:
+      replicas: 1
       serviceMonitor:
         main:
           enabled: true
           labels:
             release: kube-prometheus-stack
       container:
-        replicas: 1
         env:
           OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io/v1/traces
           REPORTER_MODE: combined
