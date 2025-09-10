@@ -26,7 +26,7 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 2,
-      "id": 2,
+      "id": 25,
       "links": [],
       "panels": [
         {
@@ -111,14 +111,18 @@ data:
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "editorMode": "code",
-              "expr": "sum by (le) (rate(codefresh_event_reporter_workqueue_work_duration_seconds_bucket[$__rate_interval]))",
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "sum by(le) (rate(codefresh_event_reporter_workqueue_work_duration_seconds_bucket{container=\"resource-reporter\"}[$__rate_interval]))",
               "format": "heatmap",
+              "fullMetaSearch": false,
               "hide": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "__auto",
               "range": true,
-              "refId": "B"
+              "refId": "B",
+              "useBackend": false
             }
           ],
           "title": "work_duration (workqueue)",
@@ -206,7 +210,7 @@ data:
             {
               "disableTextWrap": false,
               "editorMode": "builder",
-              "expr": "histogram_quantile(0.95, sum by(le, pod) (rate(codefresh_event_reporter_resource_event_processing_duration_seconds_bucket[$__rate_interval])))",
+              "expr": "histogram_quantile(0.95, sum by(le, pod) (rate(codefresh_event_reporter_resource_event_processing_duration_seconds_bucket{container=\"resource-reporter\"}[$__rate_interval])))",
               "fullMetaSearch": false,
               "includeNullMetadata": true,
               "legendFormat": "__auto",
@@ -398,7 +402,7 @@ data:
               },
               "disableTextWrap": false,
               "editorMode": "builder",
-              "expr": "sum by(pod) (rate(codefresh_event_reporter_cached_ignored_events_total{metric_event_type=\"single-resource\"}[$__rate_interval]))",
+              "expr": "sum by(pod) (rate(codefresh_event_reporter_cached_ignored_events_total{metric_event_type=\"single-resource\", container=\"resource-reporter\"}[$__rate_interval]))",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -413,12 +417,226 @@ data:
           "type": "barchart"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 17
+          },
+          "id": 19,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.1.0",
+          "targets": [
+            {
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "sum by(service) (go_goroutines{container=\"resource-reporter\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
+              "legendFormat": "goroutines",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            }
+          ],
+          "title": "goroutines",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 17
+          },
+          "id": 20,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.1.0",
+          "targets": [
+            {
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "sum by(service) (go_memstats_alloc_bytes{container=\"resource-reporter\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
+              "legendFormat": "memstats_alloc_bytes",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "sum by(service) (go_memstats_heap_sys_bytes{container=\"resource-reporter\"})",
+              "fullMetaSearch": false,
+              "hide": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "memstats_heap_sys_bytes",
+              "range": true,
+              "refId": "B",
+              "useBackend": false
+            }
+          ],
+          "title": "memory",
+          "type": "timeseries"
+        },
+        {
           "collapsed": false,
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 17
+            "y": 25
           },
           "id": 13,
           "panels": [],
@@ -450,7 +668,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 18
+            "y": 26
           },
           "id": 8,
           "options": {
@@ -494,14 +712,18 @@ data:
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "editorMode": "code",
-              "expr": "sum by (le) (rate(codefresh_event_reporter_workqueue_latency_seconds_bucket[$__rate_interval]))",
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "sum by(le) (rate(codefresh_event_reporter_workqueue_latency_seconds_bucket{container=\"event-reporter\"}[$__rate_interval]))",
               "format": "heatmap",
+              "fullMetaSearch": false,
               "hide": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "__auto",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "latency (workqueue)",
@@ -532,7 +754,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 18
+            "y": 26
           },
           "id": 15,
           "options": {
@@ -576,14 +798,18 @@ data:
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "editorMode": "code",
-              "expr": "sum by (le) (rate(codefresh_event_reporter_workqueue_work_duration_seconds_bucket[$__rate_interval]))",
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "sum by(le) (rate(codefresh_event_reporter_workqueue_work_duration_seconds_bucket{container=\"event-reporter\"}[$__rate_interval]))",
               "format": "heatmap",
+              "fullMetaSearch": false,
               "hide": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "__auto",
               "range": true,
-              "refId": "B"
+              "refId": "B",
+              "useBackend": false
             }
           ],
           "title": "work_duration (workqueue)",
@@ -641,7 +867,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 26
+            "y": 34
           },
           "id": 10,
           "options": {
@@ -733,7 +959,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 26
+            "y": 34
           },
           "id": 6,
           "options": {
@@ -824,7 +1050,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 34
+            "y": 42
           },
           "id": 7,
           "options": {
@@ -918,7 +1144,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 34
+            "y": 42
           },
           "id": 2,
           "options": {
@@ -1018,7 +1244,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 42
+            "y": 50
           },
           "id": 3,
           "options": {
@@ -1109,7 +1335,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 42
+            "y": 50
           },
           "id": 1,
           "options": {
@@ -1230,7 +1456,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 50
+            "y": 58
           },
           "id": 5,
           "options": {
@@ -1338,7 +1564,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 50
+            "y": 58
           },
           "id": 12,
           "options": {
@@ -1445,7 +1671,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 58
+            "y": 66
           },
           "id": 11,
           "options": {
@@ -1464,11 +1690,15 @@ data:
           "pluginVersion": "12.1.0",
           "targets": [
             {
-              "editorMode": "code",
-              "expr": "sum(go_goroutines {container=\"event-reporter\"}) by (service)",
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "sum by(service) (go_goroutines{container=\"event-reporter\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "legendFormat": "goroutines",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "goroutines",
