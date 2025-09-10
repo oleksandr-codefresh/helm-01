@@ -40,7 +40,8 @@ gitops-runtime:
     enabled: false
   cf-argocd-extras:
     eventReporter:
-      replicas: 1
+      controller:
+        replicas: 1
       serviceMonitor:
         main:
           enabled: true
