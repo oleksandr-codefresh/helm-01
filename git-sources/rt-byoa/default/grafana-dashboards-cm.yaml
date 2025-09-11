@@ -26,7 +26,7 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 2,
-      "id": 25,
+      "id": 2,
       "links": [],
       "panels": [
         {
@@ -1561,24 +1561,32 @@ data:
           "pluginVersion": "12.1.0",
           "targets": [
             {
-              "editorMode": "code",
-              "expr": "sum(codefresh_event_reporter_queue_size) by (job)",
-              "legendFormat": "old queue size",
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "sum by(job) (rate(codefresh_event_reporter_enqueued_events_total{container=\"event-reporter\"}[$__rate_interval]))",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
+              "legendFormat": "old_queue_{{job}}",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             },
             {
               "datasource": {
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "editorMode": "code",
-              "expr": "sum(codefresh_event_reporter_workqueue_depth) by (job)",
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "sum by(job, queue) (codefresh_event_reporter_workqueue_depth{container=\"event-reporter\"})",
+              "fullMetaSearch": false,
               "hide": false,
+              "includeNullMetadata": true,
               "instant": false,
-              "legendFormat": "workqueue size",
+              "legendFormat": "workqueue_{{queue}}",
               "range": true,
-              "refId": "B"
+              "refId": "B",
+              "useBackend": false
             }
           ],
           "title": "queue_size",
@@ -1808,7 +1816,7 @@ data:
       "timezone": "browser",
       "title": "event-reporter",
       "uid": "977dfcfe-ed59-428e-9071-b4d321fff374",
-      "version": 2
+      "version": 1
     }
   argo-cd.json: |
     {
