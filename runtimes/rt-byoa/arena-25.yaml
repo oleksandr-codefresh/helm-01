@@ -6,16 +6,16 @@ metadata:
   labels:
     codefresh.io/entity: internal-config
     codefresh.io/internal: 'true'
-  name: in-cluster
+  name: arena-25
 spec:
   destination:
-    namespace: argocd
-    server: https://kubernetes.default.svc
-  project: default
+    namespace: default
+    server: https://arena-25-vcluster.rnd-sandbox.cf-infra.com
+  project: cf-runtime-app-project
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,configurations/**/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,rt-byoa/byoa-gs.yaml,rt-byoa/cf-gitops-runtime.yaml,rt-byoa/default-git-source.yaml,rt-byoa/vcluster-vc1-rollouts.yaml,runtimes/rt-byoa/**/*.yaml,runtimes/rt-byoa/*.yaml}
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,rt-byoa-managed-cluster-arena-25-cm.yaml,runtimes/rt-byoa/**/*.yaml,runtimes/rt-byoa/*.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git

@@ -29,6 +29,17 @@ gitops-runtime:
           key: token
       server:
         rootpath: /argocd
+    event-reporters:
+      image:
+        registry: quay.io
+        repository: codefresh/dev/cf-argocd-extras
+        tag: cr-30629-resource-reporter-workqueu-2-495366e
+        # registry: quay.io
+        # repository: codefresh/dev/cf-argocd-extras
+        # tag: cr-30626-optimize-app-reporter-18aabbe
+        # registry: docker.io
+        # repository: xeonalex/cf-argocd-extras
+        # tag: res-rep-0
     runtime:
       ingress:
         enabled: false
@@ -38,43 +49,28 @@ gitops-runtime:
     skipValidation: false
   tunnel-client:
     enabled: false
-  cf-argocd-extras:
-    eventReporter:
-      controller:
-        replicas: 1
+  event-reporters:
+    runtime-event-reporter:
+      env:
+        EVENT_REPORTER_REPLICAS: 1
+        OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
+        RESOURCE_THREADINESS: 10
+        RESOURCE_RESYNC_PERIOD_SEC: 300 # default 300
       serviceMonitor:
-        main:
-          enabled: true
-          labels:
-            release: kube-prometheus-stack
-      container:
-        env:
-          OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
-        # image:
-          # registry: quay.io
-          # repository: codefresh/dev/cf-argocd-extras
-          # tag: cr-30626-optimize-app-reporter-18aabbe
-          # registry: docker.io
-          # repository: xeonalex/cf-argocd-extras
-          # tag: res-rep-0
-    resourceReporter:
-      controller:
-        replicas: 1
+        enabled: true
+        labels:
+          release: kube-prometheus-stack
+    cluster-event-reporter:
+      env:
+        OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
+        RESOURCE_THREADINESS: 10
+        RESOURCE_RESYNC_PERIOD_SEC: 300 # default 300
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 256m
       serviceMonitor:
-        main:
-          enabled: true
-          labels:
-            release: kube-prometheus-stack
-      container:
-        env:
-          OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
-        # image:
-          # registry: quay.io
-          # repository: codefresh/dev/cf-argocd-extras
-          # tag: cr-30626-optimize-app-reporter-18aabbe
-          # registry: docker.io
-          # repository: xeonalex/cf-argocd-extras
-          # tag: res-rep-0
-      # serviceMonitor:
-      #   main:
-      #     enabled: true
+        enabled: true
+        interval: 15s
+        labels:
+          release: kube-prometheus-stack
