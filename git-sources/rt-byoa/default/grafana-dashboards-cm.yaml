@@ -6636,7 +6636,7 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 26,
+      "id": 4,
       "links": [],
       "panels": [
         {
@@ -6734,7 +6734,7 @@ data:
               "fullMetaSearch": false,
               "includeNullMetadata": true,
               "intervalFactor": 1,
-              "legendFormat": "{{queue_name}}",
+              "legendFormat": "{{queue}}/{{pod}}",
               "range": true,
               "refId": "A",
               "useBackend": false
@@ -6838,7 +6838,7 @@ data:
               "fullMetaSearch": false,
               "includeNullMetadata": true,
               "intervalFactor": 1,
-              "legendFormat": "{{queue_name}}",
+              "legendFormat": "{{queue}}/{{pod}}",
               "range": true,
               "refId": "A",
               "useBackend": false
@@ -6942,7 +6942,7 @@ data:
               "fullMetaSearch": false,
               "includeNullMetadata": true,
               "intervalFactor": 1,
-              "legendFormat": "{{queue_name}}",
+              "legendFormat": "{{queue}}/{{pod}}",
               "range": true,
               "refId": "A",
               "useBackend": false
@@ -7044,7 +7044,7 @@ data:
               "expr": "sum(rate(codefresh_event_reporter_workqueue_latency_seconds_sum{queue=~\"$workqueue\"}[1m]) / rate(codefresh_event_reporter_workqueue_latency_seconds_count{queue=~\"$workqueue\"}[1m])) by(queue)",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{queue_name}}",
+              "legendFormat": "{{queue}}/{{pod}}",
               "range": true,
               "refId": "A"
             }
@@ -7145,7 +7145,7 @@ data:
               "expr": "sum(rate(codefresh_event_reporter_workqueue_work_duration_seconds_sum{queue=~\"$workqueue\"}[1m]) / rate(codefresh_event_reporter_workqueue_work_duration_seconds_count{queue=~\"$workqueue\"}[1m])) by(queue)",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{queue_name}}",
+              "legendFormat": "{{queue}}/{{pod}}",
               "range": true,
               "refId": "A"
             }
