@@ -16,14 +16,14 @@ spec:
           # image:
         #     repository: xeonalex/personal-argocd-dev
             # tag: latest
-        server:
-          image:
-            repository: xeonalex/personal-argocd-dev
-            tag: 3.0.2-traces-4
-        repoServer:
-          image:
-            repository: xeonalex/personal-argocd-dev
-            tag: 3.0.2-traces-4
+        # server:
+        #   image:
+        #     repository: xeonalex/personal-argocd-dev
+        #     tag: 3.0.2-traces-4
+        # repoServer:
+        #   image:
+        #     repository: xeonalex/personal-argocd-dev
+        #     tag: 3.0.2-traces-4
         configs:
           cm:
             timeout.reconciliation: 20s
