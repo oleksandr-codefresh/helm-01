@@ -1,0 +1,117 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: fsdfdsf
+spec:
+  template:
+    serviceAccountName: argo-server
+  eventBusName: codefresh-eventbus
+  dependencies:
+    - name: github-842cb0d9-892c-4576-886b-698fa4aa197a
+      eventName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+      eventSourceName: fsdfdsf
+      filters:
+        data:
+          - path: body.X-GitHub-Event
+            value:
+              - delete
+            type: string
+          - path: body.refType
+            value:
+              - branch
+            type: string
+          - path: body.sender.login
+            comparator: '='
+            type: string
+            value:
+              - adasdasd
+  triggers:
+    - template:
+        name: ffffff
+        conditions: github-842cb0d9-892c-4576-886b-698fa4aa197a
+        argoWorkflow:
+          operation: submit
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: WorkflowTemplate
+              metadata:
+                generateName: fsdfdsf-ffffff-
+              spec:
+                arguments:
+                  parameters:
+                    - name: GIT_REPO_URL
+                      value: ''
+                    - name: IMAGE_NAME
+                      value: ''
+                    - name: IMAGE_TAG
+                      value: ''
+                    - name: GIT_REVISION
+                      value: ''
+                    - name: GIT_BRANCH
+                      value: ''
+                    - name: GIT_COMMIT_URL
+                      value: ''
+                    - name: GIT_COMMIT_MESSAGE
+                      value: ''
+                    - name: DOCKERFILE
+                      value: ''
+                    - name: GIT_TOKEN_SECRET
+                      value: ''
+                    - name: CONTEXT
+                      value: ''
+                    - name: REGISTRY_CREDS_SECRET
+                      value: ''
+                    - name: DOCKER_CONFIG_SECRET
+                      value: ''
+                workflowTemplateRef:
+                  name: argo-hub.ci-simple.0.0.1
+          parameters:
+            - dest: spec.arguments.parameters.0.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: sdvsmdksd nsnk ks. k
+            - dest: spec.arguments.parameters.1.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: kmk
+            - dest: spec.arguments.parameters.2.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: mk
+            - dest: spec.arguments.parameters.3.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: mk
+            - dest: spec.arguments.parameters.4.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: 'n'
+            - dest: spec.arguments.parameters.5.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: kn
+            - dest: spec.arguments.parameters.6.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: kn
+            - dest: spec.arguments.parameters.7.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: kn
+            - dest: spec.arguments.parameters.8.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: kn
+            - dest: spec.arguments.parameters.9.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: k
+            - dest: spec.arguments.parameters.10.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: nk
+            - dest: spec.arguments.parameters.11.value
+              src:
+                dependencyName: github-842cb0d9-892c-4576-886b-698fa4aa197a
+                dataTemplate: nk
