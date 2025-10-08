@@ -2,8 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: >-
-      alex-app-generator:argoproj.io/Application:codefresh/ar-10-to-arena-11-app-1-prod
+    argocd.argoproj.io/manifest-generate-paths: .
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
   labels:
