@@ -12,7 +12,7 @@ metadata:
   name: sync-issue-main-1-dev
 spec:
   destination:
-    name: arena-11
+    name: in-cluster
     namespace: scale-test
   project: default
   source:

@@ -13,7 +13,7 @@ metadata:
   namspace: codefresh
 spec:
   destination:
-    name: arena-11
+    name: in-cluster
     namespace: scale-test
   project: default
   source:

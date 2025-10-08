@@ -12,7 +12,7 @@ metadata:
   name: sync-issue-second-4-prod
 spec:
   destination:
-    name: arena-11
+    name: in-cluster
     namespace: scale-test
   project: default
   source:
