@@ -10,7 +10,6 @@ metadata:
     app.kubernetes.io/instance: alex-app-generator
     cf.load-test: 'true'
   name: sync-issue-main-2-prod
-  namespace: codefresh
 spec:
   destination:
     name: arena-11
