@@ -17,7 +17,7 @@ spec:
   source:
     path: dev
     repoURL: https://github.com/oleksandr-codefresh/argo-load-product-1
-    targetRevision: main
+    targetRevision: HEAD
   syncPolicy:
     automated:
       allowEmpty: true
