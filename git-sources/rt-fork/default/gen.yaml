@@ -6,7 +6,7 @@ metadata:
   name: alex-app-generator
 spec:
   destination:
-    namespace: argocd
+    namespace: rt-fork
     server: https://kubernetes.default.svc
   project: default
   source:
