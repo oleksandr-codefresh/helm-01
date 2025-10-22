@@ -51,6 +51,8 @@ gitops-runtime:
     enabled: false
   event-reporters:
     runtime-event-reporter:
+      image:
+        tag: e746a97
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
