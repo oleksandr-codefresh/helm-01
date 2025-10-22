@@ -8,4 +8,4 @@ dependencies:
     # repository: oci://quay.io/codefresh
     # version: 0.22.2
     repository: oci://quay.io/codefresh/dev
-    version: 0.0.0-refactor-cf-argocd-extras-463313f
+    version: 0.0.0-feat-hackaton-overrides-ea95561
