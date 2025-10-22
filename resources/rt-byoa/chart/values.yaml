@@ -32,11 +32,11 @@ gitops-runtime:
           key: token
       server:
         rootpath: /argocd
-    event-reporters:
-      image:
-        registry: quay.io
-        repository: codefresh/dev/cf-argocd-extras
-        tag: cr-30629-resource-reporter-workqueu-2-1d99b0b
+    # event-reporters:
+      # image:
+      #   registry: quay.io
+      #   repository: codefresh/dev/cf-argocd-extras
+      #   tag: cr-30629-resource-reporter-workqueu-2-1d99b0b
         # registry: quay.io
         # repository: codefresh/dev/cf-argocd-extras
         # tag: cr-30626-optimize-app-reporter-18aabbe
