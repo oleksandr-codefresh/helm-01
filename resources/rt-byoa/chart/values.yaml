@@ -4,9 +4,9 @@ gitops-runtime:
       cors: http://local.codefresh.io
       graphqlPlayground: 'true'
     image:
-      # repository: us-docker.pkg.dev/codefresh-inc/gcr.io/codefresh-io/dev/cap-app-proxy
+      repository: us-docker.pkg.dev/codefresh-inc/gcr.io/codefresh-io/dev/cap-app-proxy
       tag: 1.3844.0-hackaton-overrides-dc08541
-    replicaCount: 0
+    replicaCount: 1
   argo-cd:
     enabled: false
   argo-workflows:
