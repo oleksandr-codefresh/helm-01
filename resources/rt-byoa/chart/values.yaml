@@ -3,6 +3,8 @@ gitops-runtime:
     config:
       cors: http://local.codefresh.io
       graphqlPlayground: 'true'
+    image:
+      tag: 1.3821.0
   argo-cd:
     enabled: false
   argo-workflows:
@@ -51,8 +53,6 @@ gitops-runtime:
     enabled: false
   event-reporters:
     runtime-event-reporter:
-      image:
-        tag: e746a97
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
@@ -63,6 +63,8 @@ gitops-runtime:
         labels:
           release: kube-prometheus-stack
     cluster-event-reporter:
+      image:
+        tag: e746a97
       env:
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
         RESOURCE_THREADINESS: 10
