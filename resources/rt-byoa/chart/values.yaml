@@ -65,7 +65,7 @@ gitops-runtime:
           release: kube-prometheus-stack
     cluster-event-reporter:
       image:
-        tag: e746a97
+        tag: 695977c
       env:
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
         RESOURCE_THREADINESS: 10
