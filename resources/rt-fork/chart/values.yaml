@@ -1,7 +1,7 @@
 gitops-runtime:
   app-proxy:
     config:
-      cors: http://local.codefresh.io,local.codefresh.io
+      cors: http://local.codefresh.io,https://alexs-platform.ngrok.io
       graphqlPlayground: 'true'
   argo-cd:
     configs:
