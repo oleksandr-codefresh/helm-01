@@ -67,6 +67,6 @@ gitops-runtime:
       name: rt-fork
       isConfigurationRuntime: true
   installer:
-    skipValidation: false
+    skipValidation: true
   tunnel-client:
     enabled: false
