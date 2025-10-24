@@ -74,7 +74,7 @@ gitops-runtime:
     runtime-event-reporter:
       image:
         repository: codefresh/dev/cf-argocd-extras
-        tag: cr-logs-3a6c907
+        tag: cr-logs-939cedc
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
@@ -85,7 +85,7 @@ gitops-runtime:
     cluster-event-reporter:
       image:
         repository: codefresh/dev/cf-argocd-extras
-        tag: cr-logs-3a6c907
+        tag: cr-logs-939cedc
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
