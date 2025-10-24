@@ -5,16 +5,17 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   labels:
     codefresh.io/entity: internal-config
-    codefresh.io/internal: "true"
+    codefresh.io/internal: 'true'
   name: kubernetes-admin-arena-25
 spec:
   destination:
-    namespace: rt-fork
+    namespace: default
     server: https://arena-25-vcluster.rnd-sandbox.cf-infra.com
   project: cf-runtime-app-project
   source:
     directory:
-      include: '{all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/rt-fork/*.yaml,runtimes/rt-fork/**/*.yaml}'
+      include: >-
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,rt-fork-managed-cluster-kubernetes-admin-arena-25-cm.yaml,runtimes/rt-fork/**/*.yaml,runtimes/rt-fork/*.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git
@@ -25,4 +26,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - allowEmpty=true
+      - allowEmpty=true
