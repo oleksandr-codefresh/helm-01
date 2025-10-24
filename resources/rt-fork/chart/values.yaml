@@ -70,3 +70,26 @@ gitops-runtime:
     skipValidation: true
   tunnel-client:
     enabled: false
+  event-reporters:
+    runtime-event-reporter:
+      image:
+        repository: quay.io/codefresh/dev/cf-argocd-extras
+        tag: cr-logs-3a6c907
+      env:
+        EVENT_REPORTER_REPLICAS: 1
+        OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
+      # serviceMonitor:
+      #   enabled: true
+      #   labels:
+      #     release: kube-prometheus-stack
+    cluster-event-reporter:
+      image:
+        repository: quay.io/codefresh/dev/cf-argocd-extras
+        tag: cr-logs-3a6c907
+      env:
+        EVENT_REPORTER_REPLICAS: 1
+        OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
+      # serviceMonitor:
+      #   enabled: true
+      #   labels:
+      #     release: kube-prometheus-stack
