@@ -63,7 +63,8 @@ gitops-runtime:
     runtime:
       ingress:
         enabled: false
-      ingressUrl: http://runtimes.local.com:7711
+      ingressUrl: https://c57e84382bed.ngrok.app
+      ingressUrl4: http://runtimes.local.com:7711
       name: rt-fork
       isConfigurationRuntime: true
   installer:
