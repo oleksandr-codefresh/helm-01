@@ -55,6 +55,9 @@ gitops-runtime:
     enabled: false
   event-reporters:
     runtime-event-reporter:
+      image:
+        repository: quay.io/codefresh/dev/cf-argocd-extras
+        tag: cr-logs-3a6c907
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
@@ -66,7 +69,8 @@ gitops-runtime:
           release: kube-prometheus-stack
     cluster-event-reporter:
       image:
-        tag: 695977c
+        repository: quay.io/codefresh/dev/cf-argocd-extras
+        tag: cr-logs-3a6c907
       env:
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
         RESOURCE_THREADINESS: 10
