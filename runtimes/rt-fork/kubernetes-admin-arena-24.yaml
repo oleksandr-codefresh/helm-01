@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    codefresh.io/entity: internal-config
+    codefresh.io/internal: 'true'
+  name: kubernetes-admin-arena-24
+spec:
+  destination:
+    namespace: default
+    server: https://arena-24-vcluster.rnd-sandbox.cf-infra.com
+  project: cf-runtime-app-project
+  source:
+    directory:
+      include: >-
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,rt-fork-managed-cluster-kubernetes-admin-arena-24-cm.yaml,runtimes/rt-fork/**/*.yaml,runtimes/rt-fork/*.yaml}
+      recurse: true
+    path: resources
+    repoURL: https://github.com/oleksandr-codefresh/helm-01.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - allowEmpty=true
