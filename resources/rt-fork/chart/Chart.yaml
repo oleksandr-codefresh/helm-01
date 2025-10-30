@@ -5,8 +5,8 @@ name: codefresh-gitops-runtime
 version: 0.24.0
 dependencies:
   - name: gitops-runtime
-    repository: oci://quay.io/codefresh/dev
-    version: 0.24.6-fix-eventbus-list-permissions-596840f
+    repository: oci://quay.io/codefresh
+    version: 0.24.4
     # repository: oci://quay.io/codefresh/dev
     # version: 0.25.0-feat-bump-image-3-1-5-sync  
     # repository: oci://quay.io/codefresh/dev
