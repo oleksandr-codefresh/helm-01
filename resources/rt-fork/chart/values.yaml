@@ -69,6 +69,7 @@ gitops-runtime:
       isConfigurationRuntime: true
   installer:
     skipValidation: true
+    skipUsageValidation: true
   tunnel-client:
     enabled: false
   argo-gateway:
