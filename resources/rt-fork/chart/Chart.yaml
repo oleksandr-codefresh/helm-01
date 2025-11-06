@@ -7,7 +7,7 @@ dependencies:
   - name: gitops-runtime
     # repository: oci://quay.io/codefresh
     # version: 0.25.0
-    # repository: oci://quay.io/codefresh/dev
-    # version: 0.25.0-feat-bump-image-3-1-5-sync  
     repository: oci://quay.io/codefresh/dev
-    version: 0.0.0-baabd74
+    version: 0.25.1-prep-v0.25.1-2cb97f3  
+    # repository: oci://quay.io/codefresh/dev
+    # version: 0.0.0-baabd74
