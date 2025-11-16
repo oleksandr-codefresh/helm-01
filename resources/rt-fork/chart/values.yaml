@@ -72,11 +72,11 @@ gitops-runtime:
     skipUsageValidation: true
   tunnel-client:
     enabled: false
-  argo-gateway:
-    image:
-      # registry: quay.io
-      repository: codefresh/dev/cf-argocd-extras
-      tag: cr-logs-939cedc
+  # argo-gateway:
+  #   image:
+  #     # registry: quay.io
+  #     repository: codefresh/dev/cf-argocd-extras
+  #     tag: cr-logs-939cedc
   event-reporters:
     runtime-event-reporter:
       image:
