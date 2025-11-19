@@ -1,0 +1,102 @@
+gitops-runtime:
+  app-proxy:
+    config:
+      cors: http://local.codefresh.io,https://alexs-platform.ngrok.io
+      graphqlPlayground: 'true'
+  argo-cd:
+    configs:
+      cm:
+        accounts.admin: apiKey,login
+      params:
+        controller.log.level: debug
+        server.basehref: /argocd
+        server.insecure: true
+        server.rootpath: /argocd
+    extraObjects:
+      - apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/backend-protocol: HTTP
+          name: runtime-ingress
+        spec:
+          ingressClassName: nginx
+          rules:
+            - http:
+                paths:
+                  - backend:
+                      service:
+                        name: argo-cd-server
+                        port:
+                          number: 80
+                    path: /argocd
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /webhooks
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /workflows
+                    pathType: Prefix
+                  - backend:
+                      service:
+                        name: internal-router
+                        port:
+                          number: 80
+                    path: /app-proxy
+                    pathType: Prefix
+  global:
+    codefresh:
+      accountId: 67bca12b5e470fc3eecfdfb7
+      url: https://alexs-platform.ngrok.io
+      userToken:
+        secretKeyRef:
+          name: codefresh-user-token
+          key: token
+    runtime:
+      ingress:
+        enabled: false
+      ingressUrl: http://runtimes.local.com:7711
+      ingressUrl4: https://c57e84382bed.ngrok.app
+      name: rt-fork
+      isConfigurationRuntime: true
+  installer:
+    skipValidation: true
+    skipUsageValidation: true
+  tunnel-client:
+    enabled: false
+  # argo-gateway:
+  #   image:
+  #     # registry: quay.io
+  #     repository: codefresh/dev/cf-argocd-extras
+  #     tag: cr-logs-939cedc
+  event-reporters:
+    runtime-event-reporter:
+      image:
+        repository: codefresh/dev/cf-argocd-extras
+        tag: cr-logs-939cedc
+      env:
+        EVENT_REPORTER_REPLICAS: 1
+        OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
+      # serviceMonitor:
+      #   enabled: true
+      #   labels:
+      #     release: kube-prometheus-stack
+    cluster-event-reporter:
+      image:
+        repository: codefresh/dev/cf-argocd-extras
+        tag: cr-logs-939cedc
+      env:
+        EVENT_REPORTER_REPLICAS: 1
+        OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
+      # serviceMonitor:
+      #   enabled: true
+      #   labels:
+      #     release: kube-prometheus-stack
