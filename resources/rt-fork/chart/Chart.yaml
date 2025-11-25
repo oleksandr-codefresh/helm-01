@@ -6,7 +6,7 @@ version: 0.24.0
 dependencies:
   - name: gitops-runtime
     repository: oci://quay.io/codefresh
-    version: 0.25.1
+    version: 0.24.7
     # repository: oci://quay.io/codefresh/dev
     # version: 25.11-0-f9a04a1  
     # repository: oci://quay.io/codefresh/dev
