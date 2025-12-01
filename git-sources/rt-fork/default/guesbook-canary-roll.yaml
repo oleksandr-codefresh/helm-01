@@ -1,53 +1,53 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: guesbook-canary-roll
-  annotations:
-    # codefresh.io/product: helm-guestbook
-    codefresh.io/app-long-sync-minutes: '1'
-    change: new-valie
-    argocd.argoproj.io/manifest-generate-paths: .
-  labels: 
-    commit: test
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io/foreground
-spec:
-  # ignoreDifferences:
-  #   - group: batch/v1
-  #     kind: Job
-  #     jqPathExpressions:
-  #     - .spec.template.spec.initContainers[] | select(.name == "wait").resources
-      # - (.spec.template.spec.initContainers[] | select(.name == "wait")).resources
-  project: default
-  # project: restricted
-  source:
-    path: guestbooks/guestbook-rollout
-    # path: kustomize-guestbook
-    repoURL: https://github.com/oleksandr-codefresh/argocd-example-apps
-    targetRevision: personal-eks
-    # plugin: # cmp plugin with return only one configmap
-    #   env:
-    #     - name: RELEASE_NAME
-    #       value: pre-prod
-  destination:
-    name: in-cluster
-    # name: alina
-    namespace: rt-fork
-  syncPolicy:
-    # automated:
-    #   allowEmpty: true
-    #   prune: true
-    #   selfHeal: true
-    retry:
-      limit: 2
-      backoff:
-        duration: 5s
-        maxDuration: 3m0s
-        factor: 2
-    syncOptions:
-      # - PrunePropagationPolicy=foreground
-      - Replace=false
-      - PruneLast=false
-      - Validate=true
-      - CreateNamespace=true
-      - ApplyOutOfSyncOnly=false
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: guesbook-canary-roll
+#   annotations:
+#     # codefresh.io/product: helm-guestbook
+#     codefresh.io/app-long-sync-minutes: '1'
+#     change: new-valie
+#     argocd.argoproj.io/manifest-generate-paths: .
+#   labels: 
+#     commit: test
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io/foreground
+# spec:
+#   # ignoreDifferences:
+#   #   - group: batch/v1
+#   #     kind: Job
+#   #     jqPathExpressions:
+#   #     - .spec.template.spec.initContainers[] | select(.name == "wait").resources
+#       # - (.spec.template.spec.initContainers[] | select(.name == "wait")).resources
+#   project: default
+#   # project: restricted
+#   source:
+#     path: guestbooks/guestbook-rollout
+#     # path: kustomize-guestbook
+#     repoURL: https://github.com/oleksandr-codefresh/argocd-example-apps
+#     targetRevision: personal-eks
+#     # plugin: # cmp plugin with return only one configmap
+#     #   env:
+#     #     - name: RELEASE_NAME
+#     #       value: pre-prod
+#   destination:
+#     name: in-cluster
+#     # name: alina
+#     namespace: rt-fork
+#   syncPolicy:
+#     # automated:
+#     #   allowEmpty: true
+#     #   prune: true
+#     #   selfHeal: true
+#     retry:
+#       limit: 2
+#       backoff:
+#         duration: 5s
+#         maxDuration: 3m0s
+#         factor: 2
+#     syncOptions:
+#       # - PrunePropagationPolicy=foreground
+#       - Replace=false
+#       - PruneLast=false
+#       - Validate=true
+#       - CreateNamespace=true
+#       - ApplyOutOfSyncOnly=false
