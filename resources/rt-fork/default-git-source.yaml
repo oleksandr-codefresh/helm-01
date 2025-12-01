@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: default-git-source
+  name: rt-fork-default-git-source
   labels:
     codefresh.io/entity: 'git-source'
     codefresh.io/internal: 'false'
