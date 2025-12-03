@@ -79,9 +79,9 @@ gitops-runtime:
   #     tag: cr-logs-939cedc
   event-reporters:
     runtime-event-reporter:
-      # image:
-      #   repository: codefresh/dev/cf-argocd-extras
-      #   tag: cr-logs-939cedc
+      image:
+        repository: codefresh/dev/cf-argocd-extras
+        tag: cr-logs-939cedc
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
@@ -90,9 +90,9 @@ gitops-runtime:
       #   labels:
       #     release: kube-prometheus-stack
     cluster-event-reporter:
-      # image:
-      #   repository: codefresh/dev/cf-argocd-extras
-      #   tag: cr-logs-939cedc
+      image:
+        repository: codefresh/dev/cf-argocd-extras
+        tag: cr-logs-939cedc
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
