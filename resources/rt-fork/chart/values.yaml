@@ -52,6 +52,8 @@ gitops-runtime:
                           number: 80
                     path: /app-proxy
                     pathType: Prefix
+  argo-rollouts:
+    enabled: true
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
