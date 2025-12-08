@@ -36,7 +36,7 @@ gitops-runtime:
           rootpath: /argocd
           svc: argocd-server
         repoServer:
-          svc: argo-cd-repo-server
+          svc: argocd-repo-server
     # event-reporters:
       # image:
       #   registry: quay.io
