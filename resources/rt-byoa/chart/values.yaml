@@ -27,13 +27,16 @@ gitops-runtime:
           key: token
     integrations:
       argo-cd:
-        auth:
-          type: token
-          tokenSecretKeyRef:
-            name: gitops-runtime-argo-cd-token
-            key: token
         server:
+          auth:
+            type: token
+            tokenSecretKeyRef:
+              name: gitops-runtime-argo-cd-token
+              key: token
           rootpath: /argocd
+          svc: argocd-server
+        repoServer:
+          svc: argo-cd-repo-server
     # event-reporters:
       # image:
       #   registry: quay.io
