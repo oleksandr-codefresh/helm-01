@@ -25,14 +25,15 @@ gitops-runtime:
         secretKeyRef:
           name: codefresh-user-token
           key: token
-    external-argo-cd:
-      auth:
-        type: token
-        tokenSecretKeyRef:
-          name: gitops-runtime-argo-cd-token
-          key: token
-      server:
-        rootpath: /argocd
+    integrations:
+      argo-cd:
+        auth:
+          type: token
+          tokenSecretKeyRef:
+            name: gitops-runtime-argo-cd-token
+            key: token
+        server:
+          rootpath: /argocd
     # event-reporters:
       # image:
       #   registry: quay.io
