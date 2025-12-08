@@ -9,7 +9,7 @@ metadata:
   name: mon-controller
 spec:
   destination:
-    namespace: rt-fork
+    namespace: argocd
     server: https://kubernetes.default.svc
   project: default
   source:
