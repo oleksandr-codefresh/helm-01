@@ -11,7 +11,7 @@ spec:
   project: cf-git-sources
   sources:
     - repoURL: https://github.com/oleksandr-codefresh/helm-01.git
-      path: git-sources/rt-fork/default
+      path: git-sources/rt-fork/rt-fork-detault
       targetRevision: HEAD
       directory:
         include: '*'
