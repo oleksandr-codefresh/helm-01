@@ -86,7 +86,7 @@ gitops-runtime:
       #   tag: cr-logs-939cedc
         registry: docker.io
         repository: xeonalex/cf-argocd-extras
-        tag: mcr-1
+        tag: mcr-2
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
