@@ -85,7 +85,7 @@ gitops-runtime:
       #   repository: codefresh/dev/cf-argocd-extras
       #   tag: cr-logs-939cedc
         repository: xeonalex/cf-argocd-extras
-        tag: mcr-0
+        tag: mcr-1
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
