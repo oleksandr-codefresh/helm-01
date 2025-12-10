@@ -67,7 +67,7 @@ gitops-runtime:
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
-        RESOURCE_THREADINESS: 10
+        THREADINESS: 10
         RESOURCE_RESYNC_PERIOD_SEC: 300 # default 300
       serviceMonitor:
         enabled: true
