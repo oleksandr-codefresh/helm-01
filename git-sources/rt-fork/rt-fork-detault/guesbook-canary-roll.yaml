@@ -34,10 +34,10 @@ spec:
     # name: alina
     namespace: rt-fork
   syncPolicy:
-    automated:
-      allowEmpty: true
-      prune: true
-      selfHeal: true
+    # automated:
+    #   allowEmpty: true
+    #   prune: true
+    #   selfHeal: true
     retry:
       limit: 2
       backoff:
