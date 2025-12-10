@@ -84,6 +84,7 @@ gitops-runtime:
       image:
       #   repository: codefresh/dev/cf-argocd-extras
       #   tag: cr-logs-939cedc
+        registry: docker.io
         repository: xeonalex/cf-argocd-extras
         tag: mcr-1
       env:
