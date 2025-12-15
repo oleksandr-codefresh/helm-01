@@ -61,11 +61,12 @@ gitops-runtime:
     enabled: true
   event-reporters:
     runtime-event-reporter:
-      image:
+      # image:
         # repository: quay.io/codefresh/dev/cf-argocd-extras
         # tag: cr-logs-3a6c907
-        repository: xeonalex/cf-argocd-extras
-        tag: mcr-0
+        # registry: docker.io
+        # repository: xeonalex/cf-argocd-extras
+        # tag: mcr-0
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
