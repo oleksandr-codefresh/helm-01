@@ -57,6 +57,8 @@ gitops-runtime:
     skipValidation: true
   tunnel-client:
     enabled: false
+  redis:
+    enabled: true
   event-reporters:
     runtime-event-reporter:
       image:

@@ -74,6 +74,8 @@ gitops-runtime:
     skipUsageValidation: true
   tunnel-client:
     enabled: false
+  redis:
+    enabled: true
   # argo-gateway:
   #   image:
   #     # registry: quay.io
