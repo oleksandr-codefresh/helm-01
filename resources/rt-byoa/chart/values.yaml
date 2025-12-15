@@ -3,9 +3,9 @@ gitops-runtime:
     config:
       cors: http://local.codefresh.io
       graphqlPlayground: 'true'
-    image:
-      repository: quay.io/codefresh/dev/cap-app-proxy
-      tag: 1.3844.0-hackaton-overrides-dc08541
+    # image:
+    #   repository: quay.io/codefresh/dev/cap-app-proxy
+    #   tag: 1.3844.0-hackaton-overrides-dc08541
     replicaCount: 1
   argo-cd:
     enabled: false
