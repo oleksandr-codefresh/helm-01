@@ -34,10 +34,10 @@ spec:
     # name: alina
     namespace: test-restricted
   syncPolicy:
-    # automated:
-    #   allowEmpty: true
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
     retry:
       limit: 2
       backoff:
