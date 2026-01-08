@@ -1,40 +1,40 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: lightweight
-  annotations:
-    # codefresh.io/product: helm-guestbook
-    codefresh.io/app-long-sync-minutes: '1'
-    change: new-valie
-    argocd.argoproj.io/manifest-generate-paths: .
-  labels:
-    commit: test
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io/foreground
-spec:
-  project: default
-  source:
-    path: lightweight
-    repoURL: https://github.com/oleksandr-codefresh/argocd-example-apps
-    targetRevision: personal-eks
-  destination:
-    name: in-cluster
-    namespace: test-restricted
-  syncPolicy:
-    automated:
-      allowEmpty: true
-      prune: true
-      selfHeal: true
-    retry:
-      limit: 2
-      backoff:
-        duration: 5s
-        maxDuration: 3m0s
-        factor: 2
-    syncOptions:
-      - PrunePropagationPolicy=foreground
-      - Replace=false
-      - PruneLast=false
-      - Validate=true
-      - CreateNamespace=true
-      - ApplyOutOfSyncOnly=false
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: lightweight
+#  annotations:
+#    # codefresh.io/product: helm-guestbook
+#    codefresh.io/app-long-sync-minutes: '1'
+#    change: new-valie
+#    argocd.argoproj.io/manifest-generate-paths: .
+#  labels:
+#    commit: test
+#  finalizers:
+#    - resources-finalizer.argocd.argoproj.io/foreground
+#spec:
+#  project: default
+#  source:
+#    path: lightweight
+#    repoURL: https://github.com/oleksandr-codefresh/argocd-example-apps
+#    targetRevision: personal-eks
+#  destination:
+#    name: in-cluster
+#    namespace: test-restricted
+#  syncPolicy:
+#    automated:
+#      allowEmpty: true
+#      prune: true
+#      selfHeal: true
+#    retry:
+#      limit: 2
+#      backoff:
+#        duration: 5s
+#        maxDuration: 3m0s
+#        factor: 2
+#    syncOptions:
+#      - PrunePropagationPolicy=foreground
+#      - Replace=false
+#      - PruneLast=false
+#      - Validate=true
+#      - CreateNamespace=true
+#      - ApplyOutOfSyncOnly=false
