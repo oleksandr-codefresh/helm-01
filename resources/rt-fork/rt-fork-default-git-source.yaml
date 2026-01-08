@@ -1,15 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: default-git-source
+  name: rt-fork-default-git-source
   labels:
     codefresh.io/entity: 'git-source'
     codefresh.io/internal: 'false'
+  # finalizers:
+  # - resources-finalizer.argocd.argoproj.io
 spec:
   project: cf-git-sources
   sources:
     - repoURL: https://github.com/oleksandr-codefresh/helm-01.git
-      path: git-sources/rt-fork/default
+      path: git-sources/rt-fork/rt-fork-detault
       targetRevision: HEAD
       directory:
         include: '*'

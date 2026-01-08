@@ -3,6 +3,10 @@ gitops-runtime:
     config:
       cors: http://local.codefresh.io
       graphqlPlayground: 'true'
+    # image:
+    #   repository: quay.io/codefresh/dev/cap-app-proxy
+    #   tag: 1.3844.0-hackaton-overrides-dc08541
+    replicaCount: 1
   argo-cd:
     enabled: false
   argo-workflows:
@@ -21,46 +25,61 @@ gitops-runtime:
         secretKeyRef:
           name: codefresh-user-token
           key: token
-    external-argo-cd:
-      auth:
-        type: token
-        tokenSecretKeyRef:
-          name: gitops-runtime-argo-cd-token
-          key: token
-      server:
-        rootpath: /argocd
+    integrations:
+      argo-cd:
+        server:
+          auth:
+            type: token
+            tokenSecretKeyRef:
+              name: gitops-runtime-argo-cd-token
+              key: token
+          rootpath: /argocd
+          svc: argocd-server
+        repoServer:
+          svc: argocd-repo-server
     event-reporters:
       image:
-        registry: quay.io
-        repository: codefresh/dev/cf-argocd-extras
-        tag: cr-30629-resource-reporter-workqueu-2-495366e
+        # registry: quay.io
+        # repository: codefresh/dev/cf-argocd-extras
+        # tag: cr-30629-resource-reporter-workqueu-2-1d99b0b
         # registry: quay.io
         # repository: codefresh/dev/cf-argocd-extras
         # tag: cr-30626-optimize-app-reporter-18aabbe
-        # registry: docker.io
-        # repository: xeonalex/cf-argocd-extras
-        # tag: res-rep-0
+        registry: docker.io
+        repository: xeonalex/cf-argocd-extras
+        tag: del-event-0
     runtime:
       ingress:
         enabled: false
       ingressUrl: http://runtimes.local.com:7713
       name: rt-byoa
   installer:
-    skipValidation: false
+    skipValidation: true
   tunnel-client:
     enabled: false
+  redis:
+    enabled: true
   event-reporters:
     runtime-event-reporter:
+      # image:
+        # repository: quay.io/codefresh/dev/cf-argocd-extras
+        # tag: cr-logs-3a6c907
+        # registry: docker.io
+        # repository: xeonalex/cf-argocd-extras
+        # tag: mcr-0
       env:
         EVENT_REPORTER_REPLICAS: 1
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
-        RESOURCE_THREADINESS: 10
+        THREADINESS: 10
         RESOURCE_RESYNC_PERIOD_SEC: 300 # default 300
       serviceMonitor:
         enabled: true
         labels:
           release: kube-prometheus-stack
     cluster-event-reporter:
+      # image:
+      #   repository: quay.io/codefresh/dev/cf-argocd-extras
+      #   tag: cr-logs-3a6c907
       env:
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
         RESOURCE_THREADINESS: 10

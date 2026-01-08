@@ -52,8 +52,6 @@ gitops-runtime:
                           number: 80
                     path: /app-proxy
                     pathType: Prefix
-  argo-rollouts:
-    enabled: true
   global:
     codefresh:
       accountId: 67bca12b5e470fc3eecfdfb7
@@ -74,36 +72,6 @@ gitops-runtime:
     skipUsageValidation: true
   tunnel-client:
     enabled: false
-  redis:
-    enabled: true
-  # argo-gateway:
-  #   image:
-  #     # registry: quay.io
-  #     repository: codefresh/dev/cf-argocd-extras
-  #     tag: cr-logs-939cedc
-  event-reporters:
-    runtime-event-reporter:
-      image:
-      #   repository: codefresh/dev/cf-argocd-extras
-      #   tag: cr-logs-939cedc
-        registry: docker.io
-        repository: xeonalex/cf-argocd-extras
-        tag: mcr-3
-      env:
-        EVENT_REPORTER_REPLICAS: 1
-        OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
-      # serviceMonitor:
-      #   enabled: true
-      #   labels:
-      #     release: kube-prometheus-stack
-    cluster-event-reporter:
-      # image:
-      #   repository: codefresh/dev/cf-argocd-extras
-      #   tag: cr-logs-939cedc
-      env:
-        EVENT_REPORTER_REPLICAS: 1
-        OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
-      # serviceMonitor:
-      #   enabled: true
-      #   labels:
-      #     release: kube-prometheus-stack
+  cf-argocd-extras:
+    eventReporter:
+      enabled: false

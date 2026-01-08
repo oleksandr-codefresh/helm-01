@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    codefresh.io/entity: internal-config
+    codefresh.io/internal: 'true'
+  name: mon-controller
+spec:
+  destination:
+    namespace: rt-fork
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: mon-controller
+    repoURL: https://github.com/oleksandr-codefresh/argocd-example-apps
+    targetRevision: personal-eks
+  syncPolicy:
+    # automated:
+    #   allowEmpty: true
+    #   prune: true
+    #   selfHeal: true
+    syncOptions:
+      - allowEmpty=true

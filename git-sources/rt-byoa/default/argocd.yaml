@@ -7,7 +7,9 @@ spec:
   source:
     chart: argo-cd
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: 8.2.7
+    targetRevision: 9.1.7 # 3.1.0
+    # targetRevision: 8.6.4 # 3.1.0
+    # targetRevision: 8.2.7 # 3.0.2
     # targetRevision: 7.9.1 # 2.14
     helm:
       valuesObject:
@@ -15,14 +17,14 @@ spec:
           # image:
         #     repository: xeonalex/personal-argocd-dev
             # tag: latest
-        server:
-          image:
-            repository: xeonalex/personal-argocd-dev
-            tag: 3.0.2-traces-4
-        repoServer:
-          image:
-            repository: xeonalex/personal-argocd-dev
-            tag: 3.0.2-traces-4
+        # server:
+        #   image:
+        #     repository: xeonalex/personal-argocd-dev
+        #     tag: 3.0.2-traces-4
+        # repoServer:
+        #   image:
+        #     repository: xeonalex/personal-argocd-dev
+        #     tag: 3.0.2-traces-4
         configs:
           cm:
             timeout.reconciliation: 20s
