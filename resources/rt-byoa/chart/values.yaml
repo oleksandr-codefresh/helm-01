@@ -47,7 +47,7 @@ gitops-runtime:
         # tag: cr-30626-optimize-app-reporter-18aabbe
         registry: docker.io
         repository: xeonalex/cf-argocd-extras
-        tag: del-event-0
+        tag: del-event-1
     runtime:
       ingress:
         enabled: false
