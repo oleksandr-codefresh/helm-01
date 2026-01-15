@@ -7,5 +7,5 @@ dependencies:
   - name: gitops-runtime
     repository: oci://quay.io/codefresh
     version: 0.26.2
-    # repository: oci://quay.io/codefresh/dev
-    # version: 0.0.0-feat-hackaton-overrides-ea95561
+    repository: oci://quay.io/codefresh/dev
+    version: 0.0.0-feat-cr-33063-confirm-prunning-18cb3a0

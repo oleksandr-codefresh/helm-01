@@ -45,9 +45,9 @@ gitops-runtime:
         # registry: quay.io
         # repository: codefresh/dev/cf-argocd-extras
         # tag: cr-30626-optimize-app-reporter-18aabbe
-        registry: docker.io
-        repository: xeonalex/cf-argocd-extras
-        tag: del-event-2
+        # registry: docker.io
+        # repository: xeonalex/cf-argocd-extras
+        # tag: del-event-2
     runtime:
       ingress:
         enabled: false
