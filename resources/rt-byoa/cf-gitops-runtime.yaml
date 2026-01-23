@@ -5,6 +5,8 @@ metadata:
   labels:
     codefresh.io/entity: runtime
     codefresh.io/internal: 'true'
+  annotations:
+    codefresh.io/product: runtime
 spec:
   project: default
   source:
