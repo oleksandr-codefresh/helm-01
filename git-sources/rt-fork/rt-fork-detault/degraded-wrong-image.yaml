@@ -1,12 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
- name: lightweight
- annotations:
-   codefresh.io/product: test
-   codefresh.io/app-long-sync-minutes: '1'
-   change: new-valie
-   argocd.argoproj.io/manifest-generate-paths: .
+ name: degraded-wrong-image
  labels:
    commit: test
  finalizers:
@@ -14,12 +9,12 @@ metadata:
 spec:
  project: default
  source:
-   path: lightweight
+   path: degraded/wrong-image
    repoURL: https://github.com/oleksandr-codefresh/argocd-example-apps
    targetRevision: personal-eks
  destination:
    name: in-cluster
-   namespace: test-restricted
+   namespace: test-dev
  syncPolicy:
    automated:
      allowEmpty: true
