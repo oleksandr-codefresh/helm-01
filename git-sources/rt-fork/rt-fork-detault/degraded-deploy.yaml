@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wrong-image
+spec:
+  progressDeadlineSeconds: 5
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: helm-guestbook
+      release: helm-guesbook-dev
+  template:
+    metadata:
+      labels:
+        app: helm-guestbook
+        release: helm-guesbook-dev
+    spec:
+      containers:
+        - image: xeonalex/guesbook:unexisted
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          name: helm-guestbook
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources: {}
