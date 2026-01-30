@@ -57,8 +57,8 @@ spec:
                   return obj
           params:
             server.insecure: true
-            server.basehref: /argocd
-            server.rootpath: /argocd
+            # server.basehref: /argocd
+            # server.rootpath: /argocd
             controller.log.level: debug
             otlp.address: https://alexs-otel.ngrok.io/v1/traces
         extraObjects:
