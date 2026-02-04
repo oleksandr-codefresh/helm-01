@@ -77,9 +77,9 @@ gitops-runtime:
         labels:
           release: kube-prometheus-stack
     cluster-event-reporter:
-      # image:
-      #   repository: quay.io/codefresh/dev/cf-argocd-extras
-      #   tag: cr-logs-3a6c907
+      image:
+        repository: quay.io/codefresh/dev/cf-argocd-extras
+        tag: cr-logs-3a6c9dsd07
       env:
         OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://alexs-otel.ngrok.io
         RESOURCE_THREADINESS: 10
