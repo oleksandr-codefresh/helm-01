@@ -1,0 +1,41 @@
+gitops-runtime:
+  app-proxy:
+    config:
+      cors: http://local.codefresh.io
+      graphqlPlayground: 'true'
+  argo-cd:
+    enabled: false
+  argo-workflows:
+    controller:
+      workflowDefaults:
+        spec:
+          archiveLogs: true
+          artifactRepositoryRef:
+            configMap: codefresh-workflows-log-store
+            key: codefresh-workflows-log-store
+  global:
+    codefresh:
+      accountId: 67bca12b5e470fc3eecfdfb7
+      url: https://alexs-platform.ngrok.io
+      userToken:
+        secretKeyRef:
+          name: codefresh-user-token
+          key: token
+    external-argo-cd:
+      server:
+        rootpath: /argocd
+    integrations:
+      argo-cd:
+        auth:
+          token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJuYmYiOjE3NzM5MzE0MjUsImlhdCI6MTc3MzkzMTQyNSwianRpIjoiMDQyYjA0ZjYtMzVmOC00ZDhjLWE1N2YtN2NiM2E1NzExZjQ5In0.65tBhvv4FDFEB-3ypSx1oNIiVyMVidViWRQpHc5JhLM
+          type: token
+    runtime:
+      ingress:
+        enabled: false
+      ingressUrl: http://runtimes.local.com:7713
+      name: rt-byoa
+  installer:
+    skipValidation: false
+  tunnel-client:
+    enabled: false
