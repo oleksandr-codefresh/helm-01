@@ -30,6 +30,11 @@ gitops-runtime:
           token: >-
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJuYmYiOjE3NzM5MzE0MjUsImlhdCI6MTc3MzkzMTQyNSwianRpIjoiMDQyYjA0ZjYtMzVmOC00ZDhjLWE1N2YtN2NiM2E1NzExZjQ5In0.65tBhvv4FDFEB-3ypSx1oNIiVyMVidViWRQpHc5JhLM
           type: token
+        server:
+          svc: argocd-server
+          rootpath: '/argocd'
+        repoServer:
+          svc: argocd-repo-server
     runtime:
       ingress:
         enabled: false
