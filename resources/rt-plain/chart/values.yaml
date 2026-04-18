@@ -11,9 +11,12 @@ gitops-runtime:
       cors: http://local.codefresh.io
       graphqlPlayground: 'true'
   argo-cd:
-    # redis-ha:
-    #   enabled: true
-    #   hardAntiAffinity: false
+    redis-ha:
+      enabled: true
+      hardAntiAffinity: false
+      # nameOverride: runtime-redis
+      haproxy:
+        hardAntiAffinity: false
     configs:
       cm:
         accounts.admin: apiKey,login
