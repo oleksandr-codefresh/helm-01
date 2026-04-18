@@ -1,7 +1,7 @@
 gitops-runtime:
   redis-ha:
     enabled: true
-    affinity: {}
+    hardAntiAffinity: false
     haproxy:
       hardAntiAffinity: false
   app-proxy:
