@@ -21,9 +21,9 @@ spec:
     namespace: rt-plain
     server: https://kubernetes.default.svc
   syncPolicy:
-    automated:
-      allowEmpty: true
-      prune: true
-      selfHeal: true
+    # automated:
+    #   allowEmpty: true
+    #   prune: true
+    #   selfHeal: false
     syncOptions:
       - ServerSideApply=true
