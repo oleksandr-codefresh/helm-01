@@ -15,7 +15,7 @@ spec:
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,rt-plain/default-git-source.yaml,runtimes/rt-plain/**/*.yaml,runtimes/rt-plain/*.yaml}
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,rt-plain/cf-gitops-runtime.yaml,rt-plain/default-git-source.yaml,runtimes/rt-plain/**/*.yaml,runtimes/rt-plain/*.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/oleksandr-codefresh/helm-01.git
