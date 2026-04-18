@@ -7,6 +7,8 @@ gitops-runtime:
       cors: http://local.codefresh.io
       graphqlPlayground: 'true'
   argo-cd:
+    redis-ha:
+      enabled: true
     configs:
       cm:
         accounts.admin: apiKey,login
