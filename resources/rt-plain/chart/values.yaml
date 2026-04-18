@@ -1,6 +1,6 @@
 gitops-runtime:
   redis-ha:
-      enabled: true
+    enabled: true
   app-proxy:
     replicaCount: 2
     config:
