@@ -1,14 +1,16 @@
 gitops-runtime:
   redis-ha:
     enabled: true
+    hardAntiAffinity: false
   app-proxy:
     replicaCount: 2
     config:
       cors: http://local.codefresh.io
       graphqlPlayground: 'true'
   argo-cd:
-    redis-ha:
-      enabled: true
+    # redis-ha:
+    #   enabled: true
+    #   hardAntiAffinity: false
     configs:
       cm:
         accounts.admin: apiKey,login
