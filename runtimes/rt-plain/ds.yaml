@@ -8,7 +8,7 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: helm-guestbook
+      app: helm-guestbooks
       release: helm-guesbook
   template:
     metadata:
