@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: helm-guestbook
-      release: helm-guesbook
+      release: helm-guesbook2
   template:
     metadata:
       labels:
